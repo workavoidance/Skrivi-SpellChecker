@@ -1,0 +1,21 @@
+# Private writing, licensed source datasets, generated outputs and model caches.
+data/
+models/
+results/
+*.jsonl
+*.gz
+*.zip
+*.sqlite*
+*.db
+*.gguf
+*.safetensors
+*.onnx
+*.pt
+*.bin
+.env
+.env.*
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
