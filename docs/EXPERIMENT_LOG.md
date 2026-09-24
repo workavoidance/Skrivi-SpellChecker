@@ -35,3 +35,9 @@ Ran four cumulative/separated policies over ASK and three historical suites: 2,3
 Lower score-gap thresholds 3 and 2 were assessed from cached scores; both recover targets but increase warnings on labelled-clean historical cases, so neither was adopted. No source sentence was displayed or submitted to a hosted model.
 
 Selected proposal-only policy hash frozen before reserved evaluation. Eighty new checks on 20 error/control pairs give 18/20 top-three and no corrected-target warnings for both versions. No tuning after reserve; it is now consumed. Six cached-runtime tests plus 25 lightweight evaluation tests pass. See [report and aggregate files](benchmarks/2026-09-24-lexical-coverage.md). Continue with targeted independent coverage/performance validation before UI integration.
+
+## 2026-09-24: targeted coverage and opt-in integration
+
+Authored and ran 19 synthetic error targets plus 20 correct controls in fresh baseline/proposal-only processes. Top-three 11 to 19; control flags 8 to 0. Median subsequent check +0.079 seconds; peak working set +108.6 MiB. Single-run timing; targeted synthetic evidence, not independent learner performance. Saved each case locally and aggregate summaries in docs/benchmarks/2026-09-24-coverage-integration.json.
+
+Integrated only the previously frozen proposal-only policy as optional `nuspell_coverage`, leaving default unchanged. No downloads. Read-only database connections support sequential HTTP request threads. Seven coverage tests, 14 sandbox regression tests and a real localhost HTTP test passed. HTTP checks include unchanged default before/after, repeat requests, Unicode offsets and single-word replacement. Broader usability and fresh-machine setup remain untested.

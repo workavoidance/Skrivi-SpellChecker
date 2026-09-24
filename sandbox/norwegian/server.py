@@ -44,7 +44,12 @@ def serve(port=0, open_browser=True, poc=False, responsive=False, wordnet=False)
             if self.path == '/':
                 page = ('responsive-wordnet.html' if wordnet else
                         ('responsive.html' if responsive else ('poc.html' if poc else 'index.html')))
-                return self.reply(200, (HERE/page).read_text(encoding='utf-8').replace('__SESSION_KEY__', key), 'text/html; charset=utf-8')
+                from lexical_coverage import available
+                option = ('<option value="nuspell_coverage">Flere ordforslag (utprøving)</option>'
+                          if available() else
+                          '<option value="nuspell_coverage" disabled>Flere ordforslag (orddata mangler)</option>')
+                html = (HERE/page).read_text(encoding='utf-8').replace('__SESSION_KEY__', key)
+                return self.reply(200, html.replace('__COVERAGE_OPTION__', option), 'text/html; charset=utf-8')
             if self.path in ('/poc.js', '/responsive.js', '/wordnet.js'):
                 return self.reply(200, (HERE/self.path[1:]).read_text(encoding='utf-8'), 'text/javascript; charset=utf-8')
             self.reply(404, {'error': 'Not found'})

@@ -71,3 +71,11 @@ More permissive compound acceptance was rejected after it accepted a frequent mi
 The preferred policy was frozen, then tested once on the 20 reserved pairs: both default and experiment score 18/20 top-three with 0/20 corrected-target warnings. No gains or regressions; reserve is now consumed. Do not tune on it or call it untouched again.
 
 Experimental code is in `tools/experimental_lexical_coverage.py`; it is not imported by the app. Raw local traces: `results/lexical-coverage-20260924/`, `results/lexical-proposal-only-20260924/`, `results/lexical-reserved-20260924/`. Six resource-runtime tests and 25 lightweight tests pass. Next: targeted independent possessive/compound tests, resource availability and performance checks before opt-in UI integration. Context adjudication of the two ASK detection misses and dictionary-version discrepancy remain unresolved; do not lower thresholds from isolated-pair evidence.
+
+## Optional coverage integration - latest checkpoint
+
+The proposal-only policy is now an opt-in responsive UI mode; default selection and algorithm are unchanged. New targeted synthetic diagnostic: top-three 11 to 19/19, correct-target warnings 8 to 0/20. Median subsequent check 0.732 to 0.811 seconds, peak working set +108.6 MiB in one fresh-process run per mode. These tailored examples are not an independent accuracy estimate. See [integration report](docs/benchmarks/2026-09-24-coverage-integration.md).
+
+Production mode `nuspell_coverage` uses cached Ordbank/frequency assets and NorBERT3 Small; missing assets disable the option, with no downloads. Private results: `results/coverage-targeted-20260924/`. Seven coverage tests, 14 sandbox tests and localhost HTTP integration pass. Raw native suggestions stay separate from added candidates. Earlier statements that all application source is unchanged describe historical checkpoints, not this integration.
+
+Next: independent possessive/compound examples, better definition/example coverage, and contextual adjudication of the two ASK detection misses. The 20-pair reserve is consumed. Teo's previous score remains unchanged; no new claim about his paragraph.

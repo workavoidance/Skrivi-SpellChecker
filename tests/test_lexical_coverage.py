@@ -48,4 +48,18 @@ class CoverageTests(unittest.TestCase):
   for policy in ['genitive','attested','productive']:
    self.assertTrue(self.make(policy).lookup(['trygt'])['trygt']['known'])
 
+@unittest.skipUnless(importlib.util.find_spec('rapidfuzz'),'Uses existing cached Norwegian runtime')
+class IntegratedCoverageTests(unittest.TestCase):
+ def test_integrated_candidates_match_frozen_policy(self):
+  from experimental_lexical_coverage import CoverageNative
+  from lexical_coverage import CandidateCoverage
+  old=CoverageNative('proposal_only',native=Native(),bank=Bank(),frequency=Frequency())
+  new=CandidateCoverage(native=Native(),bank=Bank(),frequency=Frequency())
+  words=['bokens','ukjents','Bokes','stasjonk\u00f8','stasjonsk\u00f8','trygt']
+  a,b=old.lookup(words),new.lookup(words)
+  for word in words:
+   for field in ['known','suggestions','segmented']:
+    self.assertEqual(a[word][field],b[word][field],(word,field))
+  self.assertEqual(new.lookup(['Bokes'])['Bokes']['raw_suggestions'],[])
+
 if __name__=='__main__':unittest.main()

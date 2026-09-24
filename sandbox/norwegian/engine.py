@@ -210,8 +210,32 @@ class Checker:
         self.ordbank_resources = None
         self.obt_resources = None
         self.split_resources = None
+        self.coverage_checker = None
+        import threading
+        self.coverage_lock = threading.RLock()
 
     def check(self, text, mode):
+        if mode == 'nuspell_coverage':
+            # Optional resources are loaded only when this mode is selected.
+            with self.coverage_lock:
+                from lexical_coverage import CandidateCoverage, available
+                from nuspell_backend import NuspellChecker
+                if not available():
+                    raise RuntimeError('Denne utprøvingen trenger lokale orddata som ikke er installert.')
+                started = time.perf_counter()
+                setup_seconds = 0
+                if self.coverage_checker is None:
+                    candidate_checker = NuspellChecker(model=self.norbert)
+                    candidate_checker.native = CandidateCoverage()
+                    self.coverage_checker = candidate_checker
+                    setup_seconds = time.perf_counter() - started
+                result = self.coverage_checker.check(text, 'nuspell_context')
+                if self.norbert is None:
+                    self.norbert = self.coverage_checker.model
+                result.update(mode=mode, elapsed_seconds=time.perf_counter()-started,
+                              load_seconds=result['load_seconds']+setup_seconds,
+                              coverage='Optional possessive and compound candidate coverage; no rewriting.')
+                return result
         if mode == 'nuspell_compounds':
             return self.check_compound_policy(text)
         if mode in ('nuspell', 'nuspell_rank', 'nuspell_context', 'nuspell_confusions'):
