@@ -4,7 +4,7 @@ An independent, Windows-first Norwegian spelling project: **write freely, check 
 
 ## Current status
 
-This repository now contains the **recovered runnable Norwegian Nuspell/NorBERT sandbox**, research and evaluation tools. Run **sandbox/Start-Skrivi.cmd** to reuse the existing cache. A new accuracy baseline has not been measured. See [STATUS.md](STATUS.md) for the verified inventory and next work.
+This repository now contains the **recovered runnable Norwegian Nuspell/NorBERT sandbox**, research and evaluation tools. Run **sandbox/Start-Skrivi.cmd** to reuse the existing cache. The recovered baseline has now been rerun locally; see [measured results and limitations](docs/benchmarks/2026-09-24-baseline.md). See [STATUS.md](STATUS.md) for the verified inventory and next work.
 
 The intended baseline combines traditional Norwegian candidate generation with a small local contextual model. Definitions and examples should help the writer distinguish suggestions. Corrections must preserve wording and meaning, with no silent sentence rewriting.
 
