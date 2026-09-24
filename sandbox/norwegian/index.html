@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="nb"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Skrivi · Norsk skriveprøve</title>
+<style>
+*{box-sizing:border-box}body{font:18px/1.6 system-ui,sans-serif;color:#24343d;background:#f3f5f4;margin:0}main{max-width:1000px;margin:36px auto;padding:0 24px}header{display:flex;align-items:center;justify-content:space-between}h1{font-size:30px;margin:0}p{margin:10px 0}button,select{font:inherit;border:1px solid #adbab8;border-radius:7px;background:white;padding:9px 15px;cursor:pointer}button:hover{background:#e8efed}button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #496ed0;outline-offset:3px}button:disabled{opacity:.5;cursor:default}.primary{background:#235f54;color:white}.primary:hover{background:#194a41}.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:20px 0}textarea,#review{width:100%;min-height:280px;background:white;border:1px solid #bac6c2;border-radius:10px;padding:24px;font:22px/1.85 system-ui,sans-serif;white-space:pre-wrap;overflow-wrap:anywhere}textarea{resize:vertical}#review .word{font:inherit;padding:0 2px;border-radius:3px;border:0;background:none;color:inherit}.OK{border-bottom:2px solid #357950!important}.UNCERTAIN{background:#fff0cb!important;border-bottom:3px dotted #9c6400!important}.LIKELY_ERROR{background:#ffe0df!important;border-bottom:3px solid #b32d37!important}#review .selected{outline:3px solid #496ed0;outline-offset:3px}aside{padding:22px;background:white;border-radius:10px;margin:18px 0;border:1px solid #bac6c2}#choices{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.muted{font-size:15px;color:#53656c}.error{color:#a71929}#status{min-height:28px}details{margin:22px 0}.hidden{display:none!important}footer{margin:28px 0}.legend span{margin-right:18px}#target{font-size:26px;font-weight:650}
+.choice-card{flex:1 1 230px;min-width:0;border:1px solid #bac6c2;border-radius:8px;padding:15px}.choice-card h3{margin:0;font-size:23px;overflow-wrap:anywhere}.choice-card details{margin:12px 0}.choice-card summary{cursor:pointer}.choice-card button{margin-top:10px}.choice-card p{font-size:17px}.choice-card a{color:#235f54}.meaning-note{font-size:15px;color:#53656c}
+</style>
+<main><header><h1>Skrivi</h1><span class="muted">Bokmål · lokal utprøving</span></header>
+<p>Skriv ferdig tanken. Se på stavemåten etterpå.</p>
+<div class="tools"><label for="mode">Kontroll:</label><select id="mode"><option value="dictionary">Ordliste</option><option value="norbert_v2" selected>Ordliste + norsk kontekstmodell (forbedret)</option><option value="norbert">Norsk kontekstmodell (opprinnelig)</option><option value="norbert_v4">Helordskontekst (nytt eksperiment)</option><option value="norbert_v5">Helordskontekst (raskere eksperiment)</option><option value="norbert_v3">Utvidet kontekst + sammensatte ord (eksperiment)</option><option value="nuspell_compounds">Nuspell + sammensatte ord (ny prøve)</option><option value="nuspell">Nuspell – stavekontroll (eksperiment)</option><option value="nuspell_rank">Nuspell + forslag i kontekst (eksperiment)</option><option value="nuspell_context">Nuspell + utvidet kontekst (eksperiment)</option><option value="nuspell_confusions">Nuspell + avgrenset kontekst (eksperiment)</option><option value="qwen">Ordliste + lokal Qwen</option></select><button id="check" class="primary">Sjekk teksten</button><button id="edit" class="hidden">Skriv videre</button><button id="undo" disabled>Angre</button></div>
+<textarea id="text" aria-label="Teksten din" placeholder="Skriv eller lim inn teksten din her …" spellcheck="false"></textarea>
+<div id="review" class="hidden" aria-label="Tekst til gjennomgang"></div>
+<p id="status" role="status" aria-live="polite"></p>
+<p class="legend muted"><span>Grønn strek: ingen feil funnet</span><span>Oransje: usikkert</span><span>Rød: mulig stavefeil</span></p>
+<aside id="panel" class="hidden"><div id="progress" class="muted"></div><div id="target"></div><p id="reason"></p><div id="choices"></div><div class="tools"><button id="keep">Behold ordet</button><button id="skip">Usikker – hopp over</button><button id="prev">Forrige</button><button id="next">Neste</button></div></aside>
+<div class="tools"><button id="copy">Kopier teksten</button><button id="export">Lagre prøveresultat</button></div>
+<details><summary>Om denne prøven og eksempeltekst</summary><p>Dette er en avgrenset prøve, ikke en ferdig stavekontroll. Grønt betyr ikke at hele setningen er kontrollert. Modellen sjekker ukjente ord og noen vanlige forvekslinger. Navn og nye sammensatte ord kan bli markert selv om de er riktige.</p><p>Forslag endrer aldri teksten før du velger dem. Etter en endring bygger de resterende forslagene på teksten fra siste sjekk. Sjekk på nytt hvis sammenhengen er endret.</p><button id="example">Sett inn eksempel</button><p class="muted">Teksten behandles på denne maskinen. Ingenting lagres automatisk. «Lagre prøveresultat» laster ned teksten, forslagene og valgene dine som en fil du kan bruke i sammenligningen med Lingdys.</p></details>
+<footer><button id="close">Avslutt lokal prøve</button></footer></main>
+<script>
+const KEY='__SESSION_KEY__';const $=id=>document.getElementById(id);
+let text='',result=null,selected=null,decisions={},history=[],events=[],started=performance.now(),busy=false;
+const clone=x=>JSON.parse(JSON.stringify(x));
+// Locally bundled, manually simplified meanings; original examples, not quotations.
+// Sources checked 2026-09-05. Selected senses only, not automatic sense detection.
+const meanings=[
+ {forms:['lekse','lekser'],definition:'Skolearbeid du gjør hjemme.',example:'Sara gjør lekser før middag.',source:'https://ordbokene.no/bm/lekse'},
+ {forms:['budsjett','budsjettet'],definition:'En plan for hvor mye penger du får inn og skal bruke.',example:'Vi lager et budsjett for turen.',source:'https://ordbokene.no/bm/budsjett'},
+ {forms:['venninne','venninnen','venninna'],definition:'En jente eller kvinne som er vennen din.',example:'Nora møter en venninne på kafeen.',source:'https://ordbokene.no/bm/67619'},
+ {forms:['brettspill','brettspell'],definition:'Et spill der du flytter brikker på et brett.',example:'Familien tar fram et brettspill etter middag.',source:'https://ordbokene.no/bm/brettspill'},
+ {forms:['trinn','trinnet'],definition:'Et nivå, for eksempel et år på skolen. Kan også være et steg i en trapp.',example:'Ali går på femte trinn.',source:'https://ordbokene.no/bm/trinn'},
+ {forms:['laks','lakser'],definition:'En stor fisk med blank kropp. Laks brukes også som mat.',example:'Vi spiser laks med poteter.',source:'https://ordbokene.no/bm/laks'},
+ {forms:['mase','maser'],definition:'Å spørre eller be om noe mange ganger.',example:'Barnet maser om å få en is.',source:'https://ordbokene.no/bm/mase'}
+];
+function meaningFor(word){return meanings.find(m=>m.forms.includes(word.toLocaleLowerCase('nb')))}
+function suggestionCard(w,s){
+ const card=document.createElement('section');card.className='choice-card';
+ const title=document.createElement('h3');title.textContent=s;card.append(title);
+ const meaning=meaningFor(s);const p=document.createElement('p');
+ p.textContent=meaning?meaning.definition:'Vi har ikke en forklaring på dette ordet ennå.';card.append(p);
+ if(meaning){
+  const details=document.createElement('details'),summary=document.createElement('summary'),example=document.createElement('p');
+  summary.textContent='Se et eksempel';example.textContent=meaning.example;details.append(summary,example);card.append(details);
+  const note=document.createElement('p');note.className='meaning-note';note.textContent='En mulig betydning. ';
+  const link=document.createElement('a');link.textContent='Ordbok (åpner nettside)';link.href=meaning.source;link.target='_blank';link.rel='noopener noreferrer';note.append(link);card.append(note);
+ }
+ const use=document.createElement('button');use.textContent='Bruk «'+s+'»';use.onclick=()=>accept(w,s);card.append(use);return card;
+}
+function event(action,extra={}){events.push({seconds:(performance.now()-started)/1000,action,...extra})}
+function snapshot(){history.push({text,result:clone(result),selected,decisions:clone(decisions)});$('undo').disabled=false}
+function pending(){return result?result.words.filter(w=>w.status!=='OK'&&!decisions[w.id]):[]}
+function render(){
+ $('review').replaceChildren();if(!result)return;let cursor=0;
+ for(const w of result.words){$('review').append(document.createTextNode(text.slice(cursor,w.start_utf16)));const b=document.createElement('button');b.className='word '+(decisions[w.id]?'OK':w.status)+(selected===w.id?' selected':'');b.textContent=w.word;b.title=w.reason;b.setAttribute('aria-label',w.word+': '+(decisions[w.id]?'gjennomgått':w.status));b.onclick=()=>{selected=w.id;event('select',{id:w.id});render()};$('review').append(b);cursor=w.end_utf16}
+ $('review').append(document.createTextNode(text.slice(cursor)));$('panel').classList.toggle('hidden',selected===null);
+ if(selected!==null){const w=result.words.find(w=>w.id===selected);$('target').textContent=w.word;$('reason').textContent=w.reason;$('progress').textContent=pending().length+' ord gjenstår å vurdere';$('choices').replaceChildren();for(const s of w.suggestions){$('choices').append(suggestionCard(w,s))}if(!w.suggestions.length)$('choices').textContent='Ingen forslag. Behold ordet eller skriv det selv.';}
+}
+function advance(){selected=pending()[0]?.id??null;render();if(selected===null)$('status').textContent='Gjennomgangen er ferdig. Du kan kopiere teksten eller sjekke på nytt.'}
+function validSuggestion(w,s){
+ const word="\\p{L}+(?:['’–-]\\p{L}+)*";
+ return new RegExp(w.operation==='split'?'^'+word+' '+word+'$':'^'+word+'$','u').test(s);
+}
+function accept(w,s){
+ if(busy||!s||!validSuggestion(w,s)||text.slice(w.start_utf16,w.end_utf16)!==w.word)return;
+ snapshot();const original=w.word;const delta=s.length-(w.end_utf16-w.start_utf16);text=text.slice(0,w.start_utf16)+s+text.slice(w.end_utf16);for(const t of result.words){if(t.id===w.id){t.word=s;t.end_utf16+=delta;t.suggestions=[];}else if(t.start_utf16>=w.end_utf16-delta){t.start_utf16+=delta;t.end_utf16+=delta}}
+ result.text=text;result.edited_since_check=true;for(const t of result.words){t.start=Array.from(text.slice(0,t.start_utf16)).length;t.end=Array.from(text.slice(0,t.end_utf16)).length}
+ decisions[w.id]='replace';$('text').value=text;event('replace',{id:w.id,original,suggestion:s});advance();if(pending().length)$('status').textContent='Ordet er endret. Resterende forslag bygger på teksten fra siste sjekk.';
+}
+async function request(path,data={}){const response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-Skrivi-Key':KEY},body:JSON.stringify(data)});const body=await response.json();if(!response.ok)throw Error(body.error||'Kontrollen feilet.');return body}
+$('check').onclick=async()=>{if(busy)return;text=$('text').value;busy=true;$('check').disabled=true;$('mode').disabled=true;$('text').readOnly=true;$('status').className='';$('status').textContent='Sjekker teksten lokalt … Første modellstart kan ta litt tid.';$('panel').classList.add('hidden');$('review').classList.add('hidden');$('text').classList.remove('hidden');result=null;selected=null;decisions={};history=[];$('undo').disabled=true;
+ try{result=await request('/check',{text,mode:$('mode').value});event('check',{mode:result.mode,elapsed_seconds:result.elapsed_seconds,result:clone(result)});$('text').classList.add('hidden');$('review').classList.remove('hidden');$('edit').classList.remove('hidden');selected=pending()[0]?.id??null;render();$('status').textContent=`${pending().length} ord å vurdere · ${result.elapsed_seconds.toFixed(1)} sekunder. Ingen endringer er gjort.`;}
+ catch(e){$('status').className='error';$('status').textContent=e.message;$('edit').classList.add('hidden')}
+ finally{busy=false;$('check').disabled=false;$('mode').disabled=false;$('text').readOnly=false}};
+$('text').oninput=()=>{text=$('text').value;result=null;decisions={};history=[];$('undo').disabled=true;event('edit')};
+$('edit').onclick=()=>{if(busy)return;$('text').classList.remove('hidden');$('review').classList.add('hidden');$('panel').classList.add('hidden');$('edit').classList.add('hidden');$('text').focus()};
+for(const action of ['keep','skip'])$(action).onclick=()=>{if(selected===null||busy)return;snapshot();decisions[selected]=action;event(action,{id:selected});advance()};
+for(const [id,step] of [['prev',-1],['next',1]])$(id).onclick=()=>{if(!result)return;const list=result.words.filter(w=>w.status!=='OK');const i=list.findIndex(w=>w.id===selected);selected=list[(i+step+list.length)%list.length]?.id??null;render()};
+$('undo').onclick=()=>{if(busy||!history.length)return;({text,result,selected,decisions}=history.pop());$('text').value=text;event('undo');$('undo').disabled=!history.length;render();$('status').textContent='Siste valg er angret.'};
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('text').value);event('copy');$('status').textContent='Teksten er kopiert.'}catch{$('status').textContent='Velg «Skriv videre», marker teksten og trykk Ctrl+C.'}};
+$('export').onclick=()=>{const blob=new Blob([JSON.stringify({version:1,language:'nb',text:$('text').value,result,decisions,events},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='skrivi-proveresultat.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+$('example').onclick=()=>{if(busy)return;if($('text').value&&!confirm('Erstatte teksten med eksemplet?'))return;$('text').value='Jeg har kjøpt en ny sykel. Jeg liker å lese bøker. Vi skal hjem etter skolen.';$('text').oninput();$('edit').onclick()};
+$('close').onclick=async()=>{if(busy)return;await request('/shutdown');document.querySelector('main').textContent='Prøven er avsluttet. Du kan lukke denne fanen.'};
+</script></html>

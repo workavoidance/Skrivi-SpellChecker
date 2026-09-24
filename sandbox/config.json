@@ -1,0 +1,8 @@
+{
+  "modelFile": "Qwen3-0.6B-Q4_K_M.gguf",
+  "modelUrl": "https://huggingface.co/unsloth/Qwen3-0.6B-GGUF/resolve/50968a4468ef4233ed78cd7c3de230dd1d61a56b/Qwen3-0.6B-Q4_K_M.gguf",
+  "modelSha256": "ac2d97712095a558e31573f62f466a3f9d93990898b0ec79d7c974c1780d524a",
+  "runtimeVersion": "b9967",
+  "runtimeUrl": "https://github.com/ggml-org/llama.cpp/releases/download/b9967/llama-b9967-bin-win-cpu-x64.zip",
+  "runtimeSha256": "78462c7c3a51d907bee391f2ff8bdf2e649bb88a54103365f24fd5c6da990a7a"
+}

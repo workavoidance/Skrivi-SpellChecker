@@ -1,32 +1,27 @@
-# Verified project status
+# Verified status — 2026-09-24
 
-Updated: 2026-09-24.
+**The original Norwegian sandbox has been recovered.**
 
-Validation at repository setup: 16 evaluator/diagnostic tests passed. These verify accounting and validation only; they do not measure spelling accuracy.
+GitHub source of truth: https://github.com/workavoidance/Skrivi-SpellChecker
 
-This is the dedicated home for future spell-checker work. Each experiment should record its source revision, inputs, settings, results, and whether it changed the default.
+Application: sandbox/norwegian/. Launcher: sandbox/Start-Skrivi.cmd. Optional word help: sandbox/Start-Wordnet-Experiment.cmd. All further work should use this Git checkout.
 
-| Component | Verified location/status |
-|---|---|
-| Dataset research | `docs/research/NORWEGIAN_DYSLEXIA_DATASET_RESEARCH.md`; originally merged through Skrivi-STT PR 53 |
-| Architecture research | `docs/research/modern-norwegian-spell-checkers.md` |
-| Dictionary inspection | `docs/research/bokmaal-inspection.md`, `tools/inspect_dictionary.py`; original downloads remain outside this repository |
-| Existing evaluator | `tools/spell_checker_benchmark.py`; copied from unmerged Skrivi-STT PR 54 |
-| Candidate-stage diagnostic scorer | `tools/candidate_audit.py`; tested with artificial traces, no sandbox adapter yet |
-| Earlier runnable sandbox | Not located; no code recovered here |
-| Wider Norwegian test suite | Not recovered here |
-| Current model/dictionary versions and baseline | Not measured or verified in this repository |
+## Recovery
 
-## Next experiment
+116 source/notice files copied without algorithm changes. Hashes are in docs/RECOVERY-MANIFEST.json. Launcher wrappers were reconstructed from the original packaging script. The complete 543-file original is preserved in ignored data/local/recovered-original/, including historical datasets and results. Those files must not be published without data review. The source in Codex project storage was left untouched.
 
-Recover the actual sandbox and test suite before claiming to benchmark the existing system. Inventory model/dictionary versions, candidate limits and scoring settings. Run the unchanged baseline locally. Then classify failures into candidate absence, ranking/pruning failure, detection/display suppression and false alarms. Choose generator versus ranker experiments based on those results.
+The historical release is Skrivi-Responsive-POC.zip. Recovered editable source includes later experimental modules; recovery does not imply every experiment is active or improves accuracy. The older English/Qwen prototype is preserved locally, not published here.
 
-The old repository name workavoidance/Skrivi now resolves to workavoidance/Skrivi-STT. Research is in [merged PR 53](https://github.com/workavoidance/Skrivi-STT/pull/53); evaluation tooling remains in [open PR 54](https://github.com/workavoidance/Skrivi-STT/pull/54). Neither establishes that the prior runnable app was committed.
+Recent dictionary downloads remain in the parent workspace's output/spell-checker-research directory. Models/runtime remain in the persistent user cache. No models or external datasets were downloaded during migration.
 
-## Candidate trace contract
+## Validation
 
-One JSONL row per labelled target: `id`, explicit boolean `is_error` and `flagged`, `acceptable` reviewed answer list, `generated` complete candidate pool before context ranking, `ranked` ordered pool after ranking, and `displayed` actual visible suggestions (at most three). Optional `writer_group` and `error_type` retain stratification.
+- 16 evaluator/diagnostic tests passed during initial setup.
+- 16 recovered sandbox tests passed with the cached Python runtime: engine contracts, Nuspell protocol, candidate handling, context scoring, personal dictionary and WordNet help.
+- These are functional tests, not a new accuracy benchmark. Browser operation and fresh-machine setup have not yet been revalidated after migration.
 
-Capture all candidate sources. Ranked candidates must come from the captured pool. Do not feed gold answers to the checker. Check exported IDs against the frozen benchmark; the standalone scorer cannot detect omitted benchmark targets. Include correct tokens to measure false alarms; targeted-error tests alone cannot establish whole-text detection quality. Preserve ambiguity as multiple acceptable answers and keep unresolved cases out of scored claims.
+## Next work
 
-Reports distinguish conditional ranking accuracy from end-to-end displayed-answer recovery. Keep private traces local. No new large models or external inference are required for this diagnostic step.
+Run the app from this checkout and establish the unchanged baseline using reviewed local test data. Diagnose candidate absence, ranking/pruning failures and false alarms before changing algorithms. Keep raw writing local; publish suitable aggregates and reproducible methods.
+
+Historical provenance: research merged through Skrivi-STT PR 53; evaluator copied from commit 1fc51e4e8d1350f78a820a748b98aa87346631a8 in open PR 54. Neither old PR was changed by this migration.

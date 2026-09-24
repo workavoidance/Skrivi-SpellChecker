@@ -1,0 +1,36 @@
+/* Local application layout: preserve font size as the available width changes. */
+main{max-width:none;width:100%;padding:0 28px;margin:22px auto;container-type:inline-size;container-name:skrivi}
+header{gap:16px;flex-wrap:wrap}header+p{margin:8px 0 14px}
+.main-tools{margin:12px 0;gap:10px}
+#workspace{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start}
+#draftColumn{min-width:0}#text,#review{min-height:300px;padding:22px;font-size:22px;line-height:1.85}
+#review .OK{border-bottom:0!important}#review .selected{background:#fff0cb!important}
+#panel{margin:0;padding:18px;min-width:0}
+#panelHeader{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#target{font-size:26px}#reason{font-size:16px;margin:8px 0}
+#originalHelp .original-help{padding:0;margin:0;background:none}
+#originalHelp button{font-size:15px;padding:7px 10px;min-height:44px}
+#originalHelp details{font-size:15px;max-width:300px}
+#choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px;margin:12px 0}
+.choice-card{display:flex;flex-direction:column;padding:14px}
+.choice-card h3{font-size:24px}.choice-card p{margin:8px 0;font-size:17px}
+.choice-card .hint-label{margin-top:8px}
+.choice-card details{margin:8px 0;font-size:16px}
+.choice-card .candidate-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:10px}
+.choice-card .candidate-actions button{margin:0;min-height:44px;padding:8px 10px;font-size:16px;width:auto}
+.choice-card .candidate-actions .primary{flex-grow:1}
+#panel>.tools{margin:14px 0 0;gap:8px}#panel>.tools button{font-size:16px;padding:8px 10px;min-height:44px}
+.legend{margin:12px 0}.legend span{display:inline-block;margin:0 14px 4px 0}
+#status{margin:10px 0;min-height:0}#audioStatus{margin:8px 0;min-height:0}
+#settings{margin:18px 0}#settings summary{cursor:pointer}#settings .tools{margin:12px 0}
+#settings>details{margin:14px 0}footer{margin:14px 0}
+main.writing #workspace{grid-template-columns:minmax(0,1fr)}
+main.writing #draftColumn{max-width:1100px;width:100%;margin:auto}
+main.writing .legend,main.writing #panel{display:none!important}
+@container skrivi (min-width:920px){
+ main:not(.writing) #workspace{grid-template-columns:minmax(300px,2fr) minmax(0,3fr)}
+ #panel{position:sticky;top:16px}
+}
+@container skrivi (min-width:1400px){main:not(.writing) #workspace{grid-template-columns:minmax(420px,1fr) minmax(0,1.25fr)}}
+@media(min-aspect-ratio:3/2) and (min-width:1000px){main{margin:14px auto}header+p{margin:4px 0 8px}.main-tools{margin:8px 0}#panel{padding:14px}.choice-card{padding:12px}}
+@media(max-width:600px){main{padding:0 14px;margin:16px auto}#text,#review{padding:16px;min-height:240px}#workspace{gap:14px}#panel{padding:14px}.main-tools button{font-size:16px;padding:8px 10px}}

@@ -1,0 +1,470 @@
+{
+  "date": "2026-09-24",
+  "scope": "Application and experiment source copied without algorithm changes. Datasets and results retained in ignored local recovery snapshot.",
+  "files": [
+    {
+      "path": "sandbox/Core.ps1",
+      "sha256": "8c75b2b63bbb58d783ac7d9bd351ead9821da547efcb7177e70dae3385d2c87e"
+    },
+    {
+      "path": "sandbox/config.json",
+      "sha256": "0b6ac44db0ec1f2ab169edf7da8d127fbe6a209633e05acd03dd2883712853d6"
+    },
+    {
+      "path": "sandbox/norwegian/analyse_external_splits.py",
+      "sha256": "35c037d2b81a9f21a4bd5cbe66bc2c783d869bbc4828764f7932857b343f7fca"
+    },
+    {
+      "path": "sandbox/norwegian/benchmark_component_repairs.py",
+      "sha256": "a40d2d27f92e5c2c5e0cb109959c09b03bbaf994f9be0bbe101417aeeb1066d4"
+    },
+    {
+      "path": "sandbox/norwegian/boundary_policy_experiment.py",
+      "sha256": "0a44eae14603bc461583a59bf3ac61dfd1aaf90c114686c842aa890cdd3d2aca"
+    },
+    {
+      "path": "sandbox/norwegian/build_compound_benchmark.py",
+      "sha256": "2ee3aa850b097549fcac06ebe07e2a8eca0e1c1787c81ba6240b6bc13b529d40"
+    },
+    {
+      "path": "sandbox/norwegian/build_extended_cases.py",
+      "sha256": "257b7bea97b1dfaf667249cb72525c5538ca2f6f1d5b02e45ca5f0a741d60af4"
+    },
+    {
+      "path": "sandbox/norwegian/build_external_split_evaluation.py",
+      "sha256": "5123c3ca5014fd3627d3caaf30d8bf4236e43bf017fe24820ec15a8c38c604a2"
+    },
+    {
+      "path": "sandbox/norwegian/build_poc.py",
+      "sha256": "5fb43049a9b54cf6bdd3f641e2ebb3914bac6103888dbe7f605841cb5306cae5"
+    },
+    {
+      "path": "sandbox/norwegian/build_responsive.py",
+      "sha256": "6b03307367c1deb7574ed81eff74b616f1ed7516b7ee4eebf1aedd5fd275c195"
+    },
+    {
+      "path": "sandbox/norwegian/build_scoring_validation.py",
+      "sha256": "a726b8196d5fc0f6992693b64504ec5c1c11d11d17ea4e5f95257bafb00b52f4"
+    },
+    {
+      "path": "sandbox/norwegian/build_sourced_cases.py",
+      "sha256": "85f85597f60862d545ac5af2ef571965234ee65381c7c0456826f78a0de0e9f6"
+    },
+    {
+      "path": "sandbox/norwegian/build_split_benchmark.py",
+      "sha256": "83c89852800e7ff82028664b080364779f52becf8daa80e5168a3914c6c03d78"
+    },
+    {
+      "path": "sandbox/norwegian/build_split_phrase_resources.py",
+      "sha256": "535bfd4e240d98fdb6c58d127a63ff8f6e9074340f482a318b9a654f5f6e5b3a"
+    },
+    {
+      "path": "sandbox/norwegian/build_wordnet_experiment.py",
+      "sha256": "76f3b8e37de9ff0631320b6a969662d67f803cad260454e8076e077f37828e95"
+    },
+    {
+      "path": "sandbox/norwegian/compare_candidates.py",
+      "sha256": "da5083f1ecd36842916a5705efd2d268e4105b9a734619d581e6695b1e3fed9c"
+    },
+    {
+      "path": "sandbox/norwegian/component_join_experiment.py",
+      "sha256": "f94b207459a5f815a6e800aa83633523bba6ba6e07a4c5a34c3c22935177ace1"
+    },
+    {
+      "path": "sandbox/norwegian/context_experiments.py",
+      "sha256": "c06a3e593d647ae1af31e99b3cf1902ad99fdc719dcba0ab8b535e6392bc5d97"
+    },
+    {
+      "path": "sandbox/norwegian/context_scoring.py",
+      "sha256": "b1f9aa54a616336af87e5d4c592881fec82526ca9d2e7631a33b009a4ebd157d"
+    },
+    {
+      "path": "sandbox/norwegian/engine.py",
+      "sha256": "e4fe5ba8e24cb84c975a8f14f7246741d35bafc0b36107ccd8c5e892c117401f"
+    },
+    {
+      "path": "sandbox/norwegian/error_profiles.py",
+      "sha256": "07e0e619d3fbb88aae0047cc4813ec5dfdc48bb6b2a36a3f99915555ea61e2d7"
+    },
+    {
+      "path": "sandbox/norwegian/evaluate.py",
+      "sha256": "f5cbf264c1ff4732c54f814077a2c3d0b549457e00a43c9f901167a5343caa34"
+    },
+    {
+      "path": "sandbox/norwegian/evaluate_compound_benchmark.py",
+      "sha256": "c21ba8cffbd7e8b7dfc5584a3eaf294d5daac3652087ba45ff1d268e11fbd7ae"
+    },
+    {
+      "path": "sandbox/norwegian/evaluate_external_splits.py",
+      "sha256": "09c968b2686fb643a690554993e930cecfeff8442009adcb755f546ef090086a"
+    },
+    {
+      "path": "sandbox/norwegian/evaluate_final_split_policy.py",
+      "sha256": "034c0402a30c6b34adb438f50618a7baf9d2f24561f7c3a2d68d937783ccbe24"
+    },
+    {
+      "path": "sandbox/norwegian/evaluate_local_compound_mode.py",
+      "sha256": "062fbf8b7c1d86375fd65819110da9b7332d5ec9a3257e0df0afc6bc9fd65b3d"
+    },
+    {
+      "path": "sandbox/norwegian/evaluate_local_splits.py",
+      "sha256": "128ad647a7eaca856c78215404399f122a0b1f7f89cd1b02256f296384435f4a"
+    },
+    {
+      "path": "sandbox/norwegian/evaluate_split_benchmark.py",
+      "sha256": "9cb42cd8733ce25e4957303e3ebb3bbf89c0d4c589ea21757ccc90ff8c507f17"
+    },
+    {
+      "path": "sandbox/norwegian/evaluate_wordnet_coverage.py",
+      "sha256": "e0ca4dbdecac2f02dc73e180ca8d6f28151cd0cf38fe5b098cc1ad73ac7ceabb"
+    },
+    {
+      "path": "sandbox/norwegian/experimental_inference.py",
+      "sha256": "1de7cd9685450ce1778b58fd498d484b6960695be49a451455661c6f7eca6565"
+    },
+    {
+      "path": "sandbox/norwegian/index.html",
+      "sha256": "674eeaf84928d7041474101dfb1851dcd9394f9daaf75c5b20f1c5d599332dfd"
+    },
+    {
+      "path": "sandbox/norwegian/iteration_session.py",
+      "sha256": "e5e7b3c3ca2b2d742f428505674b42173c593f66ca567dd6a67121e2ac4796e4"
+    },
+    {
+      "path": "sandbox/norwegian/Launch-POC.cmd",
+      "sha256": "a7701c38612232b4de124d123faefabce5cdc402fcfadf7495c702b2a5a354bf"
+    },
+    {
+      "path": "sandbox/norwegian/Launch-POC.ps1",
+      "sha256": "b5c3789ac886bb6dc14dc445b03d1c8aecfe5b5557cabda2e3f89a5ba9814474"
+    },
+    {
+      "path": "sandbox/norwegian/Launch-Responsive.cmd",
+      "sha256": "0192abdec17f621c76336262da8634535b5cfc5d65849043d5df7c24b84ad75d"
+    },
+    {
+      "path": "sandbox/norwegian/Launch-Responsive.ps1",
+      "sha256": "546d49b324e93b694de7f8cae99c70ee954a639aac3a324198610b6f7bf81ed7"
+    },
+    {
+      "path": "sandbox/norwegian/Launch-Wordnet-Experiment.cmd",
+      "sha256": "614212d0b4abd567aeb9ac058d21220f0d08f67e93d162ba8272b6a55d57f470"
+    },
+    {
+      "path": "sandbox/norwegian/Launch-Wordnet-Experiment.ps1",
+      "sha256": "5eabbd58bc0c0502274a87dd185a70f6047bbe33a9ba8bf9b77032adf5bbb40a"
+    },
+    {
+      "path": "sandbox/norwegian/Launch.cmd",
+      "sha256": "fd9f1c2edb08d43f20d3f31bbd418db60970a1d23fdb8db2ccbc1874df494596"
+    },
+    {
+      "path": "sandbox/norwegian/Launch.ps1",
+      "sha256": "0bd2289788fcfaf5ed66563c389c86a2372a912042420efde7f0492cc55e5d5a"
+    },
+    {
+      "path": "sandbox/norwegian/local_speech.ps1",
+      "sha256": "cd32380ccdc4dff68839b742a1927ca272ac126f783313fbbd2bd9cdcfe4a9dc"
+    },
+    {
+      "path": "sandbox/norwegian/local_speech.py",
+      "sha256": "525de8e6c125fafe307d00024ea93ba338ab8c4f790139888552547bde807092"
+    },
+    {
+      "path": "sandbox/norwegian/nuspell_backend.py",
+      "sha256": "ada6a6f72f545e025c2c455aca3a2c2c4e6767bd0b6366365374e2d5dea8fe8d"
+    },
+    {
+      "path": "sandbox/norwegian/nuspell_experiments.py",
+      "sha256": "27413221acddf2553abc1646c88272bd04ed802aaa2b47bdf86222ba01b71a9f"
+    },
+    {
+      "path": "sandbox/norwegian/obt_experiment.py",
+      "sha256": "dd481a44203076849e8fe9bf0580d46e5c212ee303f4cb786deae4e0423af7c4"
+    },
+    {
+      "path": "sandbox/norwegian/obt_resources.py",
+      "sha256": "68a087d0cc5aa300e15e9aebb841ab26e0458cbcbfb920ce05999ae81ec51489"
+    },
+    {
+      "path": "sandbox/norwegian/obt_worker.py",
+      "sha256": "fdfe427ca4ed49dccad85ad695ec38ecd72ee5bafbd963e228de8feb6b7d372e"
+    },
+    {
+      "path": "sandbox/norwegian/ordbank_experiment.py",
+      "sha256": "64a85954bac713fd088b667f68e4cda94ade6b8acb6485cc5b8b57c1efc43f1e"
+    },
+    {
+      "path": "sandbox/norwegian/ordbank_resources.py",
+      "sha256": "8b27b9eee7cc093e80e54507c02e7c628bcd31983b58e63074d3b30c3ae86f54"
+    },
+    {
+      "path": "sandbox/norwegian/package_responsive.py",
+      "sha256": "061e66801d6317aa4faa0b72d422231aaec880cd178e7bd398e4aa5b9c6f23e0"
+    },
+    {
+      "path": "sandbox/norwegian/personal_dictionary.py",
+      "sha256": "e3f2bdb291b634a42c04d4cd8c209ecc1aa61828b2c78df1df6e3925c7f250eb"
+    },
+    {
+      "path": "sandbox/norwegian/poc.html",
+      "sha256": "af68170433a09ee52288c265bc158bc5f6bcb407e8b9f7ef972791d21b843f8f"
+    },
+    {
+      "path": "sandbox/norwegian/poc.js",
+      "sha256": "378715578a9d101b9194f8420823818f994bca6a70fc0eaabd2166c1049a3d0a"
+    },
+    {
+      "path": "sandbox/norwegian/report_context_experiments.py",
+      "sha256": "4118f3bbeda211a41fefddc9191b4e1b0dde7ef8462bdb0f075cb4b5e51b810b"
+    },
+    {
+      "path": "sandbox/norwegian/report_iteration_session.py",
+      "sha256": "654eb42ab1c4b07f1f43c9d5d87d01226a1a1628c0366b89681a716a4ac7fd4e"
+    },
+    {
+      "path": "sandbox/norwegian/report_nuspell.py",
+      "sha256": "a4dc87f5efdd24df118fd718ecf16544d1caea61e7b9e583ca45e759fa65ba39"
+    },
+    {
+      "path": "sandbox/norwegian/report_separate_goals.py",
+      "sha256": "75f0e9d2052211b5d9aaa584b9e2a2ed45632ee4b4eaa4fc49063218aad4108e"
+    },
+    {
+      "path": "sandbox/norwegian/responsive-wordnet.html",
+      "sha256": "2472d20759fdf5e0e5f01d95af2fb6094c379422b471b1491704031b9a4999e3"
+    },
+    {
+      "path": "sandbox/norwegian/responsive.css",
+      "sha256": "82847f5e8fe8df3aa0efe4156c25f5453473b9c77be70a4cd8882c725ad944f7"
+    },
+    {
+      "path": "sandbox/norwegian/responsive.html",
+      "sha256": "a09c6c29f13a29b6fe15ae56cad8af87cd3bd45a6e94bcfff272f7a4a1c7d47b"
+    },
+    {
+      "path": "sandbox/norwegian/responsive.js",
+      "sha256": "0837c8404543ba57f96d693ad8c69850a7bfac20ad56f7d0e0f74e29f563e316"
+    },
+    {
+      "path": "sandbox/norwegian/server.py",
+      "sha256": "f657d52426cf8c2e2e7ea95e151e461e01ff159a499179e48fcec6f855fe31ff"
+    },
+    {
+      "path": "sandbox/norwegian/Setup-Nuspell.cmd",
+      "sha256": "b1b4fa78bcc93ee565571d5fee6c73cf620f09a2332d00142adb3c70ef61de0a"
+    },
+    {
+      "path": "sandbox/norwegian/Setup-Nuspell.ps1",
+      "sha256": "d4534d7e0364c7469dba3b4045c92a62fa7986e2889ba2662aa7a6382b0c3b21"
+    },
+    {
+      "path": "sandbox/norwegian/Setup-OBT.cmd",
+      "sha256": "4ba62b39ccde815de579f030f87c4a54c69fd9a2ea74d635d52ffec54c31e7e7"
+    },
+    {
+      "path": "sandbox/norwegian/Setup-OBT.ps1",
+      "sha256": "4c4283a48e8c799a1ef8adc561590282919b1482b97b19758c1cefcad5ed6037"
+    },
+    {
+      "path": "sandbox/norwegian/Setup-Ordbank.cmd",
+      "sha256": "1bd66d838e88ac158e77507c39429772ff6d972581d0251d7d0dc11b70f8c6c6"
+    },
+    {
+      "path": "sandbox/norwegian/Setup-Ordbank.ps1",
+      "sha256": "893ae5411650c5eb2d3b7a0a5fcb90981c28e3634797fb6a66a52c20ad277d0d"
+    },
+    {
+      "path": "sandbox/norwegian/Setup-Responsive.ps1",
+      "sha256": "0b6706d09049abdaeba71243cdd1f2341bbeb540fda8d07b6886bbf00321c4d5"
+    },
+    {
+      "path": "sandbox/norwegian/Setup-Traditional.cmd",
+      "sha256": "850bd9449dd24b826a165ca6bb6954227b19685a44aeb414c97b77a0419cca9a"
+    },
+    {
+      "path": "sandbox/norwegian/Setup-Traditional.ps1",
+      "sha256": "a4367504fcf7561b4fa07d81ff142051134e81e8cbefd83fa068454efcee96eb"
+    },
+    {
+      "path": "sandbox/norwegian/Setup-Wordnet.cmd",
+      "sha256": "1cb9d06652112e956bccab0406235cf251884619d8985812c65653f4e7ac3740"
+    },
+    {
+      "path": "sandbox/norwegian/Setup-Wordnet.ps1",
+      "sha256": "d34bfd6f738add90e16ad3983503caa9b7e677042d6176855086f4f808dd5015"
+    },
+    {
+      "path": "sandbox/norwegian/Setup.cmd",
+      "sha256": "7312c156b3265421db340b4207972d8025aad83adb7090f24e1ad006f5c1175a"
+    },
+    {
+      "path": "sandbox/norwegian/Setup.ps1",
+      "sha256": "6e0ea17c92d6dbdce50d4c4d672d83010acca8ef8fd144c372b9dc306f7b27d0"
+    },
+    {
+      "path": "sandbox/norwegian/setup_assets.py",
+      "sha256": "f3cf4e6670cbd4f2390d012269fb73e23c89a7ab87e3277f622aee37b15c5690"
+    },
+    {
+      "path": "sandbox/norwegian/setup_nuspell.py",
+      "sha256": "90f9686b1a302011d60d6bc755c8134c43d0f8e7eb5ee89533c20bf11e56da26"
+    },
+    {
+      "path": "sandbox/norwegian/setup_obt.py",
+      "sha256": "5bfcf9c479a9c8657634f4e479d2e3d2d6bb82d78cfef5189e158c1f23903e8c"
+    },
+    {
+      "path": "sandbox/norwegian/setup_ordbank.py",
+      "sha256": "dff4a0ffcbf0573fac65950b14bc793fdd69d5c04e388b4e084bb3af769e1055"
+    },
+    {
+      "path": "sandbox/norwegian/setup_traditional.py",
+      "sha256": "1e62a2cae741b305b5346d14d0791a492ae68764b3b909e3c0e9a2a8a70a3d74"
+    },
+    {
+      "path": "sandbox/norwegian/setup_wordnet.py",
+      "sha256": "6dca8c129fa35be8653ca2ecc6032081e6cce7c65271185812d68ec55dc7df79"
+    },
+    {
+      "path": "sandbox/norwegian/split_resources.py",
+      "sha256": "6253c174fa0593b19469ecc4aebbd72ba2494a7f1f8966bac6e2c6dacff78291"
+    },
+    {
+      "path": "sandbox/norwegian/summarize_extended.py",
+      "sha256": "925cdd9825309caca7a7cb2566197a01838f0453837cfce6af78400ef5d0a289"
+    },
+    {
+      "path": "sandbox/norwegian/summarize_sourced.py",
+      "sha256": "40c983234285a1759590b6c2b2947bd471bc524796fc31a9e2f796e378e3773e"
+    },
+    {
+      "path": "sandbox/norwegian/test_boundary_policy_mode.py",
+      "sha256": "80470cd08a5a8663e4fb8a98299f6ec60356ebb375f0acd22be448f67bf1b52c"
+    },
+    {
+      "path": "sandbox/norwegian/test_candidates.py",
+      "sha256": "33997deed03afdedd0f1564b2eb48c2174e950a3a29ffd5b74c440d767336188"
+    },
+    {
+      "path": "sandbox/norwegian/test_compound_benchmark.py",
+      "sha256": "7f26d5357e9d0b00d2709751b7cebd55991c090a70b228be580117d39591ad09"
+    },
+    {
+      "path": "sandbox/norwegian/test_context_scoring.py",
+      "sha256": "c1e82c409f17143d935c3676629ecb89841d7d7e09c6f017a70bfaab7824e2f9"
+    },
+    {
+      "path": "sandbox/norwegian/test_engine.py",
+      "sha256": "87c20e89234d1fcc182f224406e908bcd9cfb650feb628841018be1e4f3b7c10"
+    },
+    {
+      "path": "sandbox/norwegian/test_iteration_session.py",
+      "sha256": "95cb67b67a5b05a54ed97fd946c04ef9082b4583b58a879eca2be661979c98a8"
+    },
+    {
+      "path": "sandbox/norwegian/test_join_ui.cjs",
+      "sha256": "e115ad578a863c12a879411dd43ec1911c8316708a3488e517c9102c55f3e226"
+    },
+    {
+      "path": "sandbox/norwegian/test_meaning_ui.cjs",
+      "sha256": "4afeebed9e73b22c9ee7b2a2e49fc05d52fc2e271bce1640a5a6af94e586160e"
+    },
+    {
+      "path": "sandbox/norwegian/test_nuspell.py",
+      "sha256": "e0a9aaedced541fc503b76b4dcfefcfd08594f79ea32fbfcb9a75803164ebf7d"
+    },
+    {
+      "path": "sandbox/norwegian/test_obt_resources.py",
+      "sha256": "fbe6fe2bd72cd46ae52fa45df6c703d56ed484bcbcf24ef8ffb55a41406c52ef"
+    },
+    {
+      "path": "sandbox/norwegian/test_ordbank_resources.py",
+      "sha256": "376184d417fced48d5018a21b49f6727e3ea3bee889326a4e6cab163d235e3ed"
+    },
+    {
+      "path": "sandbox/norwegian/test_personal_dictionary.py",
+      "sha256": "7cb463d2d5a642da77125d178423e5263f91da23f2321af1a1efe7f822efa6e3"
+    },
+    {
+      "path": "sandbox/norwegian/test_poc_browser.cjs",
+      "sha256": "07764009fe4fcba0293ad21b7156837ef64b6deb2376c73fe6c4ca924cca81e0"
+    },
+    {
+      "path": "sandbox/norwegian/test_responsive_browser.cjs",
+      "sha256": "f00c9618158c381607bcc94ef6b6a1192dbd3e0950e2cef2dd52c01cc81cde63"
+    },
+    {
+      "path": "sandbox/norwegian/test_split_browser.cjs",
+      "sha256": "2ab11e68c9f76858366526c894b9fcb570bfebac584e77eb21db2204fae2430b"
+    },
+    {
+      "path": "sandbox/norwegian/test_split_resources.py",
+      "sha256": "32c885cbe67f38fdf46f048acdf51dd9c4e9f47a11948499ff538923ca6e42a7"
+    },
+    {
+      "path": "sandbox/norwegian/test_split_ui.cjs",
+      "sha256": "f12cb3d62af5aba10ae7585a50f4eeb5f875e02a23e27d2d8a933831212fb892"
+    },
+    {
+      "path": "sandbox/norwegian/test_traditional_resources.py",
+      "sha256": "02554da11b7db908e95da165b56c487bd4c06f5533ed652a1277a45473049c5f"
+    },
+    {
+      "path": "sandbox/norwegian/test_wordnet_browser.cjs",
+      "sha256": "b9e5cca48b077d174c980d5559acfd5e19bbc0c78147383f49ef63fbe7927911"
+    },
+    {
+      "path": "sandbox/norwegian/test_wordnet_help.py",
+      "sha256": "94bb750bb1d706058aeb1a687e19c5f3c01581546b3aebf09b891d3a373b5d6f"
+    },
+    {
+      "path": "sandbox/norwegian/time_iteration_fast.py",
+      "sha256": "4d881f590b2c0ce3ca8822c99d03f604d1a72b8bb1a49ee9b38aa09d7bdc1a07"
+    },
+    {
+      "path": "sandbox/norwegian/traditional_experiment.py",
+      "sha256": "51784defeb02e8f864a50bdd21ad495a5e0e7458819bd7bcbc94ae6b0e084b9e"
+    },
+    {
+      "path": "sandbox/norwegian/traditional_resources.py",
+      "sha256": "18ed783ffe6254323f36d0a89692ec0faacf4787bc1ff55669918a9cd0e894b8"
+    },
+    {
+      "path": "sandbox/norwegian/verify_component_integration.py",
+      "sha256": "66f91f80ff9ddb8c06e67a904b65f83d5d91bf566279421ee52034e1993aaa57"
+    },
+    {
+      "path": "sandbox/norwegian/verify_compound_mode.py",
+      "sha256": "5501f30da30a5955e699d4719afecff545e5ba2c41df6073692775382f5b32e0"
+    },
+    {
+      "path": "sandbox/norwegian/verify_iteration_integration.py",
+      "sha256": "fe332488de97505e3423d8e40bac97aafc68e39509745758796706839e8a4598"
+    },
+    {
+      "path": "sandbox/norwegian/verify_nuspell.py",
+      "sha256": "75665bd768ef5b02ab588abb87220fce442f1ffc646e336c0954b2c1f24f3c7c"
+    },
+    {
+      "path": "sandbox/norwegian/verify_nuspell_http.py",
+      "sha256": "6ea687f5e3167302a42be67b7e8bd0cae2fc2d25dc5784e9bf50698f941b7948"
+    },
+    {
+      "path": "sandbox/norwegian/verify_whole_integration.py",
+      "sha256": "09c0a1c38d87b1ea6647997cb719c66484087aa89284dda2f343c795c596a006"
+    },
+    {
+      "path": "sandbox/norwegian/wordnet.js",
+      "sha256": "5aed31119292a764750d0378d390895fb298eb111650cdbcd0dac66754a7863a"
+    },
+    {
+      "path": "sandbox/norwegian/wordnet_help.py",
+      "sha256": "cfaf6dc8767894bc2b3b79acc7210ea7bcc13a37c9706ec42fcb2bc0e64b96d4"
+    },
+    {
+      "path": "sandbox/norwegian/WORDNET-NOTICE.md",
+      "sha256": "a39c64fb6e29c195f030c25488720f933e8a46a9d9d79f88376e16dac8339c24"
+    }
+  ]
+}

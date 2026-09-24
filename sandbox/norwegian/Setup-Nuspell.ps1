@@ -1,0 +1,6 @@
+$ErrorActionPreference = 'Stop'
+. "$PSScriptRoot/../Core.ps1"
+$exe = Join-Path (Get-CacheRoot) 'runtime/norwegian-py312-v1/Scripts/python.exe'
+if (!(Test-Path $exe)) { throw 'Run Setup.cmd in this folder first.' }
+& $exe "$PSScriptRoot/setup_nuspell.py"
+exit $LASTEXITCODE
