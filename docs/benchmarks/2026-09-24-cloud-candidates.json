@@ -1,0 +1,113 @@
+{
+  "total": {
+    "cases": 168,
+    "errors": 84,
+    "controls": 84,
+    "base": {
+      "top1": 78,
+      "top3": 81,
+      "control_flags": 0
+    },
+    "combined": {
+      "top1": 79,
+      "top3": 83,
+      "control_flags": 0
+    },
+    "flagged_only": {
+      "top1": 78,
+      "top3": 82,
+      "control_flags": 0
+    },
+    "base_available": 82,
+    "combined_available": 84,
+    "ai_answer_present": 84,
+    "added_cases": 6,
+    "top3_gains": 2,
+    "top3_losses": 0
+  },
+  "categories": {
+    "authored_context": {
+      "cases": 48,
+      "errors": 24,
+      "controls": 24,
+      "base": {
+        "top1": 22,
+        "top3": 22,
+        "control_flags": 0
+      },
+      "combined": {
+        "top1": 24,
+        "top3": 24,
+        "control_flags": 0
+      },
+      "flagged_only": {
+        "top1": 23,
+        "top3": 23,
+        "control_flags": 0
+      },
+      "base_available": 22,
+      "combined_available": 24,
+      "ai_answer_present": 24,
+      "added_cases": 2,
+      "top3_gains": 2,
+      "top3_losses": 0
+    },
+    "compound": {
+      "cases": 60,
+      "errors": 30,
+      "controls": 30,
+      "base": {
+        "top1": 29,
+        "top3": 30,
+        "control_flags": 0
+      },
+      "combined": {
+        "top1": 29,
+        "top3": 30,
+        "control_flags": 0
+      },
+      "flagged_only": {
+        "top1": 29,
+        "top3": 30,
+        "control_flags": 0
+      },
+      "base_available": 30,
+      "combined_available": 30,
+      "ai_answer_present": 30,
+      "added_cases": 2,
+      "top3_gains": 0,
+      "top3_losses": 0
+    },
+    "possessive": {
+      "cases": 60,
+      "errors": 30,
+      "controls": 30,
+      "base": {
+        "top1": 27,
+        "top3": 29,
+        "control_flags": 0
+      },
+      "combined": {
+        "top1": 26,
+        "top3": 29,
+        "control_flags": 0
+      },
+      "flagged_only": {
+        "top1": 26,
+        "top3": 29,
+        "control_flags": 0
+      },
+      "base_available": 30,
+      "combined_available": 30,
+      "ai_answer_present": 30,
+      "added_cases": 2,
+      "top3_gains": 0,
+      "top3_losses": 0
+    }
+  },
+  "requests": 42,
+  "estimated_usd": 0.53955,
+  "accounted_usd": 0.5879625000000003,
+  "median_batch_seconds": 4.0637327499862295,
+  "prompt_sha256": "19365e54ea7d1c8cca24449733e65633c174084b25cef4fda624a49b57d7267b"
+}
