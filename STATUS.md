@@ -36,3 +36,7 @@ Next scoring experiment: inspect the 15 default detection misses using the priva
 - Larger models, split/join behaviour, human-rated word-help usefulness and independent evaluation remain untested in this run.
 
 Historical provenance: research merged through Skrivi-STT PR 53; evaluator copied from commit 1fc51e4e8d1350f78a820a748b98aa87346631a8 in open PR 54. Neither old PR was changed by this migration.
+
+## Additional error-source research
+
+Online source inspection on 24 September identified ASK-GEC as a practical source of authentic learner spelling examples and Sprakradet's 2026 appendix as expert-designed error/control material. See [source assessment and next experiment](docs/research/NORWEGIAN_ERROR_SOURCES_2026-09-24.md). No dataset was imported and no new accuracy claim follows from this research. Next data action: curate a local, reviewed spelling-only subset with separate learner/constructed provenance and untouched evaluation cases.
