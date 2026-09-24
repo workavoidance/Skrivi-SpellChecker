@@ -41,7 +41,7 @@ Historical provenance: research merged through Skrivi-STT PR 53; evaluator copie
 
 Online source inspection on 24 September identified ASK-GEC as a practical source of authentic learner spelling examples and Sprakradet's 2026 appendix as expert-designed error/control material. See [source assessment and next experiment](docs/research/NORWEGIAN_ERROR_SOURCES_2026-09-24.md). No dataset was imported and no new accuracy claim follows from this research. Next data action: curate a local, reviewed spelling-only subset with separate learner/constructed provenance and untouched evaluation cases.
 
-## ASK sample preparation — review pending
+## ASK sample preparation — historical checkpoint (now completed below)
 
 - Downloaded only the public ASK-GEC training split (7,716,969 bytes) and source card into ignored `data/local/ask-reviewed-20260924/`.
 - Source revision: `9871205efddb575e77c4b49443ff75e28e25deae`; SHA-256: `51046c28cda51a91f0501ddcd2be91f2b98a553736b446a86246b0b48472ade9`.
@@ -51,3 +51,12 @@ Online source inspection on 24 September identified ASK-GEC as a practical sourc
 - 25 tests pass. Pytest could not write its optional cache, which does not affect the passing tests.
 - No reviewed sample or new spell-checker accuracy results yet. Automatic approval review rejected displaying full learner sentences and then a bulk list of isolated pairs in tool output. User permission to inspect public spelling pairs is pending. Until then, no labels are asserted as reviewed and no evaluation has been run.
 - Next action: obtain that review permission, review spelling-only pairs while excluding context-dependent/grammatical edits, finalize approximately 100 evaluation pairs plus a separate reserve, and run the unchanged three baseline modes offline. Application defaults remain unchanged.
+
+
+## ASK reviewed sample — completed
+
+User permission to inspect public isolated pairs was granted. Reviewed 350 pairs, accepted 120, froze labels before inference, tested 100 paired error/control examples, and kept 20 pairs unrun. This is assistant pair review, not Norwegian-human or whole-sentence adjudication. Source text stays local.
+
+All 600 offline checks passed. Dictionary / model ranking / default top-three scores: 92 / 95 / 95 out of 100; first-choice scores: 72 / 87 / 87. Each mode flagged 3 of 100 corrected targets. Default misses: three missing candidates and two unflagged dictionary-recognized targets. Top-five would add no model-mode successes. Defaults unchanged.
+
+See [ASK evaluation report](docs/benchmarks/2026-09-24-ask-spelling.md) and aggregate JSON alongside it. Private traces: `results/ask-reviewed-20260924/`. Next: investigate candidate-generation failures, then separately verify the two detection misses in context before threshold changes. Keep the 20 reserved pairs untouched until development decisions are frozen.

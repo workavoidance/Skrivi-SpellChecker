@@ -17,3 +17,12 @@ Decision: retain current defaults and the small model. Next investigate keep/cha
 Prepared offline candidate selection and target/control evaluation tools. The public training split contains 36,404 rows; the deterministic isolated-edit filter yields 2,184 unique pairs. This is a provisional review queue, not verified spelling truth. Source hash and revision are in STATUS.md and ignored local preparation metadata. Five additional tests cover exact edit isolation, target offsets, target-only controls, paired reservation and mechanical error categorization; all 25 tests pass.
 
 The review stage is pending user permission after automatic approval review blocked exposing corpus sentences and a bulk error-pair list. No model predictions were run and no application changes were made. Full source data remains in ignored data/local/ask-reviewed-20260924/. Source validation/test splits remain untouched. The intended reviewed subset will preserve original sentence context locally but will not claim whole-sentence correctness based only on pair review.
+
+
+## 2026-09-24 — ASK evaluation completed after public-pair review permission
+
+Reviewed 350 isolated pairs; accepted 120 before scoring. Tested 100 pairs (error plus corrected-target control), reserved 20 pairs without inference. Fresh sample has no exact sentence overlap with historical sets, but is spelling-selected L2 writing and may overlap upstream model training. Full sentences were not independently adjudicated.
+
+600 checks completed without failures. Top-three dictionary/ranking/default: 92/95/95 of 100. Top-one: 72/87/87. Corrected-target warnings: 3/3/3 of 100. Default remaining failures are three missing candidates and two detection misses; same-policy five options add zero successes. Engine hashes unchanged from the recovered baseline. Keep current defaults; focus next on candidate coverage and separate contextual adjudication, not a bigger suggestion list. Twenty-five tests pass.
+
+[Full report](benchmarks/2026-09-24-ask-spelling.md). Raw data/traces and review decisions remain ignored and local. Aggregate-only exporter rejects incomplete runs, changed sample hashes and any scored reserved cases.
