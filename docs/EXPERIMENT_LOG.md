@@ -11,3 +11,9 @@ Result: 1,161 checks completed without failures. The hybrid wins all three group
 Decision: retain current defaults and the small model. Next investigate keep/change decisions with separate paired cases; separately integrate richer lexical explanations with verified distribution rights. Human review of non-target flags and help usefulness remains necessary. Do not interpret the synthetic source-restoration 100/100 as general accuracy.
 
 [Full aggregate report](benchmarks/2026-09-24-baseline.md). Private traces: `results/baseline-20260924/`. Functional validation: 20 tests pass. No application algorithm or threshold changes.
+
+## 2026-09-24 — ASK source preparation (not a benchmark result)
+
+Prepared offline candidate selection and target/control evaluation tools. The public training split contains 36,404 rows; the deterministic isolated-edit filter yields 2,184 unique pairs. This is a provisional review queue, not verified spelling truth. Source hash and revision are in STATUS.md and ignored local preparation metadata. Five additional tests cover exact edit isolation, target offsets, target-only controls, paired reservation and mechanical error categorization; all 25 tests pass.
+
+The review stage is pending user permission after automatic approval review blocked exposing corpus sentences and a bulk error-pair list. No model predictions were run and no application changes were made. Full source data remains in ignored data/local/ask-reviewed-20260924/. Source validation/test splits remain untouched. The intended reviewed subset will preserve original sentence context locally but will not claim whole-sentence correctness based only on pair review.

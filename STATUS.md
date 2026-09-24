@@ -40,3 +40,14 @@ Historical provenance: research merged through Skrivi-STT PR 53; evaluator copie
 ## Additional error-source research
 
 Online source inspection on 24 September identified ASK-GEC as a practical source of authentic learner spelling examples and Sprakradet's 2026 appendix as expert-designed error/control material. See [source assessment and next experiment](docs/research/NORWEGIAN_ERROR_SOURCES_2026-09-24.md). No dataset was imported and no new accuracy claim follows from this research. Next data action: curate a local, reviewed spelling-only subset with separate learner/constructed provenance and untouched evaluation cases.
+
+## ASK sample preparation — review pending
+
+- Downloaded only the public ASK-GEC training split (7,716,969 bytes) and source card into ignored `data/local/ask-reviewed-20260924/`.
+- Source revision: `9871205efddb575e77c4b49443ff75e28e25deae`; SHA-256: `51046c28cda51a91f0501ddcd2be91f2b98a553736b446a86246b0b48472ade9`.
+- `tools/prepare_ask_spelling.py` finds 2,184 distinct isolated edit pairs among 36,404 training rows. This automated shortlist includes grammatical/lexical changes and is NOT a reviewed spelling benchmark.
+- Local preparation metadata records the deterministic seed and mechanical edit categories. Validation/test source splits were not downloaded or inspected.
+- `tools/audit_ask_spelling.py` scores precise target spans, pairs each accepted error with its corrected target, keeps reserved pairs unrun, checks exact historical sentence overlap, and saves raw traces only in ignored results. Other words in each sentence are not counted as false positives without adjudication.
+- 25 tests pass. Pytest could not write its optional cache, which does not affect the passing tests.
+- No reviewed sample or new spell-checker accuracy results yet. Automatic approval review rejected displaying full learner sentences and then a bulk list of isolated pairs in tool output. User permission to inspect public spelling pairs is pending. Until then, no labels are asserted as reviewed and no evaluation has been run.
+- Next action: obtain that review permission, review spelling-only pairs while excluding context-dependent/grammatical edits, finalize approximately 100 evaluation pairs plus a separate reserve, and run the unchanged three baseline modes offline. Application defaults remain unchanged.
