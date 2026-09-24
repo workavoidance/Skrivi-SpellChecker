@@ -26,3 +26,12 @@ Reviewed 350 isolated pairs; accepted 120 before scoring. Tested 100 pairs (erro
 600 checks completed without failures. Top-three dictionary/ranking/default: 92/95/95 of 100. Top-one: 72/87/87. Corrected-target warnings: 3/3/3 of 100. Default remaining failures are three missing candidates and two detection misses; same-policy five options add zero successes. Engine hashes unchanged from the recovered baseline. Keep current defaults; focus next on candidate coverage and separate contextual adjudication, not a bigger suggestion list. Twenty-five tests pass.
 
 [Full report](benchmarks/2026-09-24-ask-spelling.md). Raw data/traces and review decisions remain ignored and local. Aggregate-only exporter rejects incomplete runs, changed sample hashes and any scored reserved cases.
+
+
+## 2026-09-24 — Lexical coverage experiments and frozen validation
+
+Ran four cumulative/separated policies over ASK and three historical suites: 2,348 logical sentence comparisons, 284 affected-sentence reruns and 2,064 cached unchanged results. Genitives help; corpus-attested compound acceptance silently accepts a misspelling. Revising compounds to candidate proposals only gives ASK 98/100 top-three versus 95 baseline, warnings 2/100 versus 3, and historical top-three 258/277 versus 257, with no paired losses. Private paragraph stays 11/16. Defaults unchanged.
+
+Lower score-gap thresholds 3 and 2 were assessed from cached scores; both recover targets but increase warnings on labelled-clean historical cases, so neither was adopted. No source sentence was displayed or submitted to a hosted model.
+
+Selected proposal-only policy hash frozen before reserved evaluation. Eighty new checks on 20 error/control pairs give 18/20 top-three and no corrected-target warnings for both versions. No tuning after reserve; it is now consumed. Six cached-runtime tests plus 25 lightweight evaluation tests pass. See [report and aggregate files](benchmarks/2026-09-24-lexical-coverage.md). Continue with targeted independent coverage/performance validation before UI integration.

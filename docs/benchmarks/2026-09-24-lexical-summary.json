@@ -1,0 +1,727 @@
+{
+  "manifest": {
+    "complete": true,
+    "reserve_run": false,
+    "experiment_sha256": "98a4cbbbef0afcdc1ef93155e618338275f8a553033ef9a3711f9f82efb1c182",
+    "note": "Unchanged sentences reuse exact default baseline results; affected sentences rerun. Timings not comparable."
+  },
+  "proposal_only_manifest": {
+    "complete": true,
+    "reserve_run": false,
+    "experiment_sha256": "10f7d0d5fa391ba4deb78fca64cd47bf967f905298fd7eb6eb5158b111f6bb3a",
+    "note": "Unchanged sentences reuse exact default baseline results; affected sentences rerun. Timings not comparable."
+  },
+  "summary": {
+    "genitive / ask": {
+      "cases": 200,
+      "recomputed": 3,
+      "metrics": {
+        "error_targets": 100,
+        "detected": 98,
+        "candidate_hit": 98,
+        "top1": 87,
+        "top3": 96,
+        "hypothetical_top5": 96,
+        "partition_success": 96,
+        "control_targets": 100,
+        "control_false_flags": 2,
+        "partition_candidate_missing": 2,
+        "partition_not_flagged": 2
+      },
+      "transitions": {
+        "gained_top3": 1,
+        "lost_top3": 0
+      }
+    },
+    "genitive / development": {
+      "cases": 127,
+      "recomputed": 9,
+      "metrics": {
+        "errors": 105,
+        "tokens": 1594,
+        "ignored": 11,
+        "non_target_tokens": 1478,
+        "non_target_flags": 46,
+        "detected": 90,
+        "candidate_hit": 103,
+        "top1": 87,
+        "top3": 87,
+        "ranked_top5_potential": 102,
+        "detection_misses": 15,
+        "candidate_misses": 2,
+        "pool_present_not_shown": 16,
+        "partition_not_flagged": 15,
+        "partition_success": 87,
+        "clean_cases": 72,
+        "clean_cases_flagged": 18,
+        "partition_ranking_or_threshold": 2,
+        "partition_candidate_missing": 1
+      },
+      "transitions": {
+        "net_top3": 0
+      }
+    },
+    "genitive / previously_fresh": {
+      "cases": 60,
+      "recomputed": 5,
+      "metrics": {
+        "errors": 72,
+        "tokens": 1019,
+        "ignored": 0,
+        "non_target_tokens": 947,
+        "non_target_flags": 26,
+        "clean_cases": 36,
+        "clean_cases_flagged": 12,
+        "detected": 72,
+        "candidate_hit": 70,
+        "top1": 63,
+        "top3": 70,
+        "ranked_top5_potential": 70,
+        "detection_misses": 0,
+        "candidate_misses": 2,
+        "pool_present_not_shown": 0,
+        "partition_success": 70,
+        "partition_candidate_missing": 2
+      },
+      "transitions": {
+        "net_top3": 0
+      }
+    },
+    "genitive / source_restoration": {
+      "cases": 200,
+      "recomputed": 9,
+      "metrics": {
+        "errors": 100,
+        "tokens": 2956,
+        "ignored": 0,
+        "non_target_tokens": 2856,
+        "non_target_flags": 104,
+        "clean_cases": 100,
+        "clean_cases_flagged": 31,
+        "detected": 100,
+        "candidate_hit": 100,
+        "top1": 96,
+        "top3": 100,
+        "ranked_top5_potential": 100,
+        "detection_misses": 0,
+        "candidate_misses": 0,
+        "pool_present_not_shown": 0,
+        "partition_success": 100
+      },
+      "transitions": {
+        "net_top3": 0
+      }
+    },
+    "attested / ask": {
+      "cases": 200,
+      "recomputed": 27,
+      "metrics": {
+        "error_targets": 100,
+        "detected": 97,
+        "candidate_hit": 99,
+        "top1": 86,
+        "top3": 96,
+        "hypothetical_top5": 96,
+        "partition_success": 96,
+        "control_targets": 100,
+        "control_false_flags": 1,
+        "partition_not_flagged": 3,
+        "partition_candidate_missing": 1
+      },
+      "transitions": {
+        "gained_top3": 2,
+        "lost_top3": 1
+      }
+    },
+    "attested / development": {
+      "cases": 127,
+      "recomputed": 24,
+      "metrics": {
+        "errors": 105,
+        "tokens": 1594,
+        "ignored": 11,
+        "non_target_tokens": 1478,
+        "non_target_flags": 38,
+        "detected": 90,
+        "candidate_hit": 103,
+        "top1": 87,
+        "top3": 87,
+        "ranked_top5_potential": 102,
+        "detection_misses": 15,
+        "candidate_misses": 2,
+        "pool_present_not_shown": 16,
+        "partition_not_flagged": 15,
+        "partition_success": 87,
+        "clean_cases": 72,
+        "clean_cases_flagged": 15,
+        "partition_ranking_or_threshold": 2,
+        "partition_candidate_missing": 1
+      },
+      "transitions": {
+        "net_top3": 0
+      }
+    },
+    "attested / previously_fresh": {
+      "cases": 60,
+      "recomputed": 12,
+      "metrics": {
+        "errors": 72,
+        "tokens": 1019,
+        "ignored": 0,
+        "non_target_tokens": 947,
+        "non_target_flags": 21,
+        "clean_cases": 36,
+        "clean_cases_flagged": 12,
+        "detected": 72,
+        "candidate_hit": 71,
+        "top1": 64,
+        "top3": 71,
+        "ranked_top5_potential": 71,
+        "detection_misses": 0,
+        "candidate_misses": 1,
+        "pool_present_not_shown": 0,
+        "partition_success": 71,
+        "partition_candidate_missing": 1
+      },
+      "transitions": {
+        "net_top3": 1
+      }
+    },
+    "attested / source_restoration": {
+      "cases": 200,
+      "recomputed": 24,
+      "metrics": {
+        "errors": 100,
+        "tokens": 2956,
+        "ignored": 0,
+        "non_target_tokens": 2856,
+        "non_target_flags": 96,
+        "clean_cases": 100,
+        "clean_cases_flagged": 30,
+        "detected": 100,
+        "candidate_hit": 100,
+        "top1": 96,
+        "top3": 100,
+        "ranked_top5_potential": 100,
+        "detection_misses": 0,
+        "candidate_misses": 0,
+        "pool_present_not_shown": 0,
+        "partition_success": 100
+      },
+      "transitions": {
+        "net_top3": 0
+      }
+    },
+    "productive / ask": {
+      "cases": 200,
+      "recomputed": 28,
+      "metrics": {
+        "error_targets": 100,
+        "detected": 97,
+        "candidate_hit": 100,
+        "top1": 87,
+        "top3": 97,
+        "hypothetical_top5": 97,
+        "partition_success": 97,
+        "control_targets": 100,
+        "control_false_flags": 0,
+        "partition_not_flagged": 3
+      },
+      "transitions": {
+        "gained_top3": 3,
+        "lost_top3": 1
+      }
+    },
+    "productive / development": {
+      "cases": 127,
+      "recomputed": 24,
+      "metrics": {
+        "errors": 105,
+        "tokens": 1594,
+        "ignored": 11,
+        "non_target_tokens": 1478,
+        "non_target_flags": 38,
+        "detected": 90,
+        "candidate_hit": 103,
+        "top1": 87,
+        "top3": 87,
+        "ranked_top5_potential": 102,
+        "detection_misses": 15,
+        "candidate_misses": 2,
+        "pool_present_not_shown": 16,
+        "partition_not_flagged": 15,
+        "partition_success": 87,
+        "clean_cases": 72,
+        "clean_cases_flagged": 15,
+        "partition_ranking_or_threshold": 2,
+        "partition_candidate_missing": 1
+      },
+      "transitions": {
+        "net_top3": 0
+      }
+    },
+    "productive / previously_fresh": {
+      "cases": 60,
+      "recomputed": 12,
+      "metrics": {
+        "errors": 72,
+        "tokens": 1019,
+        "ignored": 0,
+        "non_target_tokens": 947,
+        "non_target_flags": 21,
+        "clean_cases": 36,
+        "clean_cases_flagged": 12,
+        "detected": 72,
+        "candidate_hit": 71,
+        "top1": 64,
+        "top3": 71,
+        "ranked_top5_potential": 71,
+        "detection_misses": 0,
+        "candidate_misses": 1,
+        "pool_present_not_shown": 0,
+        "partition_success": 71,
+        "partition_candidate_missing": 1
+      },
+      "transitions": {
+        "net_top3": 1
+      }
+    },
+    "productive / source_restoration": {
+      "cases": 200,
+      "recomputed": 24,
+      "metrics": {
+        "errors": 100,
+        "tokens": 2956,
+        "ignored": 0,
+        "non_target_tokens": 2856,
+        "non_target_flags": 96,
+        "clean_cases": 100,
+        "clean_cases_flagged": 30,
+        "detected": 100,
+        "candidate_hit": 100,
+        "top1": 96,
+        "top3": 100,
+        "ranked_top5_potential": 100,
+        "detection_misses": 0,
+        "candidate_misses": 0,
+        "pool_present_not_shown": 0,
+        "partition_success": 100
+      },
+      "transitions": {
+        "net_top3": 0
+      }
+    },
+    "proposal_only / ask": {
+      "cases": 200,
+      "recomputed": 26,
+      "metrics": {
+        "error_targets": 100,
+        "detected": 98,
+        "candidate_hit": 100,
+        "top1": 87,
+        "top3": 98,
+        "hypothetical_top5": 98,
+        "partition_success": 98,
+        "control_targets": 100,
+        "control_false_flags": 2,
+        "partition_not_flagged": 2
+      },
+      "transitions": {
+        "gained_top3": 3,
+        "lost_top3": 0
+      }
+    },
+    "proposal_only / development": {
+      "cases": 127,
+      "recomputed": 22,
+      "metrics": {
+        "errors": 105,
+        "tokens": 1594,
+        "ignored": 11,
+        "non_target_tokens": 1478,
+        "non_target_flags": 46,
+        "detected": 90,
+        "candidate_hit": 103,
+        "top1": 87,
+        "top3": 87,
+        "ranked_top5_potential": 102,
+        "detection_misses": 15,
+        "candidate_misses": 2,
+        "pool_present_not_shown": 16,
+        "partition_not_flagged": 15,
+        "partition_success": 87,
+        "clean_cases": 72,
+        "clean_cases_flagged": 18,
+        "partition_ranking_or_threshold": 2,
+        "partition_candidate_missing": 1
+      },
+      "transitions": {
+        "net_top3": 0
+      }
+    },
+    "proposal_only / previously_fresh": {
+      "cases": 60,
+      "recomputed": 11,
+      "metrics": {
+        "errors": 72,
+        "tokens": 1019,
+        "ignored": 0,
+        "non_target_tokens": 947,
+        "non_target_flags": 26,
+        "clean_cases": 36,
+        "clean_cases_flagged": 12,
+        "detected": 72,
+        "candidate_hit": 71,
+        "top1": 64,
+        "top3": 71,
+        "ranked_top5_potential": 71,
+        "detection_misses": 0,
+        "candidate_misses": 1,
+        "pool_present_not_shown": 0,
+        "partition_success": 71,
+        "partition_candidate_missing": 1
+      },
+      "transitions": {
+        "net_top3": 1
+      }
+    },
+    "proposal_only / source_restoration": {
+      "cases": 200,
+      "recomputed": 24,
+      "metrics": {
+        "errors": 100,
+        "tokens": 2956,
+        "ignored": 0,
+        "non_target_tokens": 2856,
+        "non_target_flags": 104,
+        "clean_cases": 100,
+        "clean_cases_flagged": 31,
+        "detected": 100,
+        "candidate_hit": 100,
+        "top1": 96,
+        "top3": 100,
+        "ranked_top5_potential": 100,
+        "detection_misses": 0,
+        "candidate_misses": 0,
+        "pool_present_not_shown": 0,
+        "partition_success": 100
+      },
+      "transitions": {
+        "net_top3": 0
+      }
+    }
+  },
+  "paired_comparisons": {
+    "genitive / ask": {
+      "gained_top3": 1,
+      "lost_top3": 0,
+      "added_control_flags": 0,
+      "removed_control_flags": 1
+    },
+    "genitive / development": {
+      "gained_top3": 0,
+      "lost_top3": 0,
+      "private_paragraph_baseline_top3": 11,
+      "private_paragraph_experimental_top3": 11
+    },
+    "genitive / previously_fresh": {
+      "gained_top3": 0,
+      "lost_top3": 0
+    },
+    "genitive / source_restoration": {
+      "gained_top3": 0,
+      "lost_top3": 0
+    },
+    "attested / ask": {
+      "gained_top3": 2,
+      "lost_top3": 1,
+      "added_control_flags": 0,
+      "removed_control_flags": 2
+    },
+    "attested / development": {
+      "gained_top3": 0,
+      "lost_top3": 0,
+      "private_paragraph_baseline_top3": 11,
+      "private_paragraph_experimental_top3": 11
+    },
+    "attested / previously_fresh": {
+      "gained_top3": 1,
+      "lost_top3": 0
+    },
+    "attested / source_restoration": {
+      "gained_top3": 0,
+      "lost_top3": 0
+    },
+    "productive / ask": {
+      "gained_top3": 3,
+      "lost_top3": 1,
+      "added_control_flags": 0,
+      "removed_control_flags": 3
+    },
+    "productive / development": {
+      "gained_top3": 0,
+      "lost_top3": 0,
+      "private_paragraph_baseline_top3": 11,
+      "private_paragraph_experimental_top3": 11
+    },
+    "productive / previously_fresh": {
+      "gained_top3": 1,
+      "lost_top3": 0
+    },
+    "productive / source_restoration": {
+      "gained_top3": 0,
+      "lost_top3": 0
+    },
+    "proposal_only / ask": {
+      "gained_top3": 3,
+      "lost_top3": 0,
+      "added_control_flags": 0,
+      "removed_control_flags": 1
+    },
+    "proposal_only / development": {
+      "gained_top3": 0,
+      "lost_top3": 0,
+      "private_paragraph_baseline_top3": 11,
+      "private_paragraph_experimental_top3": 11
+    },
+    "proposal_only / previously_fresh": {
+      "gained_top3": 1,
+      "lost_top3": 0
+    },
+    "proposal_only / source_restoration": {
+      "gained_top3": 0,
+      "lost_top3": 0
+    }
+  },
+  "threshold_sensitivity": {
+    "4.0 / ask": {
+      "error_targets": 100,
+      "detected": 98,
+      "native_candidate_hit": 95,
+      "candidate_hit": 97,
+      "top1": 87,
+      "top3": 95,
+      "hypothetical_top5": 95,
+      "partition_success": 95,
+      "control_targets": 100,
+      "control_false_flags": 3,
+      "partition_candidate_missing": 3,
+      "partition_not_flagged": 2
+    },
+    "4.0 / development": {
+      "errors": 105,
+      "tokens": 1594,
+      "ignored": 11,
+      "non_target_tokens": 1478,
+      "non_target_flags": 52,
+      "detected": 90,
+      "native_candidate_hit": 46,
+      "candidate_hit": 103,
+      "top1": 87,
+      "top3": 87,
+      "ranked_top5_potential": 102,
+      "detection_misses": 15,
+      "candidate_misses": 2,
+      "pool_present_not_shown": 16,
+      "partition_not_flagged": 15,
+      "partition_success": 87,
+      "clean_cases": 72,
+      "clean_cases_flagged": 19,
+      "partition_ranking_or_threshold": 2,
+      "partition_candidate_missing": 1
+    },
+    "4.0 / previously_fresh": {
+      "errors": 72,
+      "tokens": 1019,
+      "ignored": 0,
+      "non_target_tokens": 947,
+      "non_target_flags": 29,
+      "clean_cases": 36,
+      "clean_cases_flagged": 13,
+      "detected": 72,
+      "native_candidate_hit": 68,
+      "candidate_hit": 70,
+      "top1": 63,
+      "top3": 70,
+      "ranked_top5_potential": 70,
+      "detection_misses": 0,
+      "candidate_misses": 2,
+      "pool_present_not_shown": 0,
+      "partition_success": 70,
+      "partition_candidate_missing": 2
+    },
+    "4.0 / source_restoration": {
+      "errors": 100,
+      "tokens": 2956,
+      "ignored": 0,
+      "non_target_tokens": 2856,
+      "non_target_flags": 108,
+      "clean_cases": 100,
+      "clean_cases_flagged": 33,
+      "detected": 100,
+      "native_candidate_hit": 78,
+      "candidate_hit": 100,
+      "top1": 96,
+      "top3": 100,
+      "ranked_top5_potential": 100,
+      "detection_misses": 0,
+      "candidate_misses": 0,
+      "pool_present_not_shown": 0,
+      "partition_success": 100
+    },
+    "3.0 / ask": {
+      "error_targets": 100,
+      "detected": 99,
+      "native_candidate_hit": 95,
+      "candidate_hit": 97,
+      "top1": 88,
+      "top3": 96,
+      "hypothetical_top5": 95,
+      "partition_success": 96,
+      "control_targets": 100,
+      "control_false_flags": 3,
+      "partition_candidate_missing": 3,
+      "partition_not_flagged": 1
+    },
+    "3.0 / development": {
+      "errors": 105,
+      "tokens": 1594,
+      "ignored": 11,
+      "non_target_tokens": 1478,
+      "non_target_flags": 59,
+      "detected": 97,
+      "native_candidate_hit": 46,
+      "candidate_hit": 103,
+      "top1": 93,
+      "top3": 93,
+      "ranked_top5_potential": 102,
+      "detection_misses": 8,
+      "candidate_misses": 2,
+      "pool_present_not_shown": 10,
+      "partition_not_flagged": 8,
+      "partition_success": 93,
+      "clean_cases": 72,
+      "clean_cases_flagged": 22,
+      "partition_ranking_or_threshold": 3,
+      "partition_candidate_missing": 1
+    },
+    "3.0 / previously_fresh": {
+      "errors": 72,
+      "tokens": 1019,
+      "ignored": 0,
+      "non_target_tokens": 947,
+      "non_target_flags": 40,
+      "clean_cases": 36,
+      "clean_cases_flagged": 16,
+      "detected": 72,
+      "native_candidate_hit": 68,
+      "candidate_hit": 70,
+      "top1": 63,
+      "top3": 70,
+      "ranked_top5_potential": 70,
+      "detection_misses": 0,
+      "candidate_misses": 2,
+      "pool_present_not_shown": 0,
+      "partition_success": 70,
+      "partition_candidate_missing": 2
+    },
+    "3.0 / source_restoration": {
+      "errors": 100,
+      "tokens": 2956,
+      "ignored": 0,
+      "non_target_tokens": 2856,
+      "non_target_flags": 119,
+      "clean_cases": 100,
+      "clean_cases_flagged": 35,
+      "detected": 100,
+      "native_candidate_hit": 78,
+      "candidate_hit": 100,
+      "top1": 96,
+      "top3": 100,
+      "ranked_top5_potential": 100,
+      "detection_misses": 0,
+      "candidate_misses": 0,
+      "pool_present_not_shown": 0,
+      "partition_success": 100
+    },
+    "2.0 / ask": {
+      "error_targets": 100,
+      "detected": 100,
+      "native_candidate_hit": 95,
+      "candidate_hit": 97,
+      "top1": 89,
+      "top3": 97,
+      "hypothetical_top5": 95,
+      "partition_success": 97,
+      "control_targets": 100,
+      "control_false_flags": 3,
+      "partition_candidate_missing": 3
+    },
+    "2.0 / development": {
+      "errors": 105,
+      "tokens": 1594,
+      "ignored": 11,
+      "non_target_tokens": 1478,
+      "non_target_flags": 70,
+      "detected": 101,
+      "native_candidate_hit": 46,
+      "candidate_hit": 103,
+      "top1": 96,
+      "top3": 96,
+      "ranked_top5_potential": 102,
+      "detection_misses": 4,
+      "candidate_misses": 2,
+      "pool_present_not_shown": 7,
+      "partition_success": 96,
+      "partition_not_flagged": 4,
+      "clean_cases": 72,
+      "clean_cases_flagged": 24,
+      "partition_ranking_or_threshold": 4,
+      "partition_candidate_missing": 1
+    },
+    "2.0 / previously_fresh": {
+      "errors": 72,
+      "tokens": 1019,
+      "ignored": 0,
+      "non_target_tokens": 947,
+      "non_target_flags": 51,
+      "clean_cases": 36,
+      "clean_cases_flagged": 18,
+      "detected": 72,
+      "native_candidate_hit": 68,
+      "candidate_hit": 70,
+      "top1": 63,
+      "top3": 70,
+      "ranked_top5_potential": 70,
+      "detection_misses": 0,
+      "candidate_misses": 2,
+      "pool_present_not_shown": 0,
+      "partition_success": 70,
+      "partition_candidate_missing": 2
+    },
+    "2.0 / source_restoration": {
+      "errors": 100,
+      "tokens": 2956,
+      "ignored": 0,
+      "non_target_tokens": 2856,
+      "non_target_flags": 148,
+      "clean_cases": 100,
+      "clean_cases_flagged": 45,
+      "detected": 100,
+      "native_candidate_hit": 78,
+      "candidate_hit": 100,
+      "top1": 96,
+      "top3": 100,
+      "ranked_top5_potential": 100,
+      "detection_misses": 0,
+      "candidate_misses": 0,
+      "pool_present_not_shown": 0,
+      "partition_success": 100
+    }
+  },
+  "code_sha256": {
+    "experimental_lexical_coverage.py": "10f7d0d5fa391ba4deb78fca64cd47bf967f905298fd7eb6eb5158b111f6bb3a",
+    "run_lexical_coverage.py": "1a74251f9e0b21fea95c890678b489a772f5154d6826e7a4183fc4e23d5ffcbc",
+    "ask_threshold_sensitivity.py": "aebbfd5b1fc2d0ed343f11b3a3f14b2cc3825cd91e15bc3035f4131b0d08e49a"
+  }
+}

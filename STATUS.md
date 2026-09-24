@@ -60,3 +60,14 @@ User permission to inspect public isolated pairs was granted. Reviewed 350 pairs
 All 600 offline checks passed. Dictionary / model ranking / default top-three scores: 92 / 95 / 95 out of 100; first-choice scores: 72 / 87 / 87. Each mode flagged 3 of 100 corrected targets. Default misses: three missing candidates and two unflagged dictionary-recognized targets. Top-five would add no model-mode successes. Defaults unchanged.
 
 See [ASK evaluation report](docs/benchmarks/2026-09-24-ask-spelling.md) and aggregate JSON alongside it. Private traces: `results/ask-reviewed-20260924/`. Next: investigate candidate-generation failures, then separately verify the two detection misses in context before threshold changes. Keep the 20 reserved pairs untouched until development decisions are frozen.
+
+
+## Lexical coverage follow-up — completed, defaults unchanged
+
+Four isolated coverage policies and two lower context thresholds were tested. Preferred experiment: noun possessive recognition plus compound candidate proposals, without using word frequency as proof that a spelling is correct. ASK top-three improves from 95 to 98/100 and corrected-target warnings fall from 3 to 2. Historical top-three improves from 257 to 258/277; no previously successful target is lost. Teo's scored paragraph stays 11/16. Historical clean cases flagged fall from 65 to 61/208.
+
+More permissive compound acceptance was rejected after it accepted a frequent misspelling and lost a correction. Lowering the context threshold was rejected: it increases warnings on historical clean cases. See [full experiment and limitations](docs/benchmarks/2026-09-24-lexical-coverage.md).
+
+The preferred policy was frozen, then tested once on the 20 reserved pairs: both default and experiment score 18/20 top-three with 0/20 corrected-target warnings. No gains or regressions; reserve is now consumed. Do not tune on it or call it untouched again.
+
+Experimental code is in `tools/experimental_lexical_coverage.py`; it is not imported by the app. Raw local traces: `results/lexical-coverage-20260924/`, `results/lexical-proposal-only-20260924/`, `results/lexical-reserved-20260924/`. Six resource-runtime tests and 25 lightweight tests pass. Next: targeted independent possessive/compound tests, resource availability and performance checks before opt-in UI integration. Context adjudication of the two ASK detection misses and dictionary-version discrepancy remain unresolved; do not lower thresholds from isolated-pair evidence.
