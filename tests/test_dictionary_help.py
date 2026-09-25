@@ -49,3 +49,25 @@ def test_index_forms_ambiguity_metadata_and_missing_words(tmp_path):
     source.write_bytes(b'invalid')
     with pytest.raises(Exception):build_index(source,concepts,target)
     assert help.lookup('test')
+
+def test_embedded_entries_keep_expression_identity(tmp_path):
+    child={'article_id':2,'latest_status':8,'lemmas':[{'lemma':'red book'}],
+           'body':{'definitions':[definition('expression meaning',['expression example'])]}}
+    parent={'article_id':1,'lemmas':[{'lemma':'red'}], 'body':{'definitions':[
+        {'type_':'definition','elements':[{'type_':'sub_article','article':child}]}]}}
+    source=tmp_path/'input.gz';source.write_bytes(gzip.compress(json.dumps({'1':parent}).encode()))
+    concepts=tmp_path/'concepts.json';concepts.write_text('{}');target=tmp_path/'index.sqlite3'
+    stats=build_index(source,concepts,target,include_embedded=True);help=DictionaryHelp(target)
+    assert stats['counts']['embedded_articles_added']==1
+    assert help.lookup('red') is None
+    assert help.lookup('red book')['senses'][0]['definition']=='expression meaning'
+    related=help.lookup_expressions('red')
+    assert len(related)==1 and related[0]['expression']=='red book'
+    assert related[0]['kind']=='related_expression'
+    assert help.lookup_expressions('book')==[]  # no invented reverse word matching
+    # A top-level entry is authoritative; duplicate embedded copies cannot overwrite it.
+    child2=dict(child,body={'definitions':[definition('top-level meaning')]})
+    source.write_bytes(gzip.compress(json.dumps({'1':parent,'2':child2}).encode()))
+    stats=build_index(source,concepts,target,include_embedded=True)
+    assert stats['counts']['embedded_articles_added']==0
+    assert help.lookup('red book')['senses'][0]['definition']=='top-level meaning'

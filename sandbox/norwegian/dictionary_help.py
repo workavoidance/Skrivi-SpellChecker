@@ -102,10 +102,52 @@ class Renderer:
             # Sub-articles/idioms aren't definitions of the enclosing headword.
         return result
 
-def build_index(source, concepts, target):
+
+def embedded_articles(articles):
+    """Recover separate expression entries and explicit parent relationships."""
+    found = {}
+    links = set()
+    def visit(nodes, parent):
+        for node in nodes:
+            if node.get('type_') == 'sub_article':
+                child = node.get('article', {})
+                aid = child.get('article_id')
+                if aid is not None:
+                    aid = str(aid)
+                    found.setdefault(aid, child)
+                    links.add((str(parent), aid))
+                    visit(child.get('body', {}).get('definitions', []), aid)
+            visit(node.get('elements', []), parent)
+    for key, article in articles.items():
+        visit(article.get('body', {}).get('definitions', []), article.get('article_id', key))
+    return found, links
+
+
+def article_forms(article):
+    forms = {(norm(x['lemma']), '[]') for x in article.get('lemmas', []) if x.get('lemma')}
+    for lemma in article.get('lemmas', []):
+        for paradigm in lemma.get('paradigm_info', []):
+            if paradigm.get('to') is None and paradigm.get('standardisation') == 'STANDARD':
+                for form in paradigm.get('inflection', []):
+                    if form.get('word_form'):
+                        tags = paradigm.get('tags', []) + form.get('tags', [])
+                        forms.add((norm(form['word_form']), json.dumps(tags)))
+    return forms
+
+
+def build_index(source, concepts, target, include_embedded=False):
     source, concepts, target = map(Path, (source, concepts, target))
     packed = source.read_bytes()
     articles = json.loads(gzip.decompress(packed))
+    source_count = len(articles)
+    links = set()
+    additions = 0
+    if include_embedded:
+        embedded, links = embedded_articles(articles)
+        for aid, child in embedded.items():
+            if aid not in articles:
+                articles[aid] = child
+                additions += 1
     concept_bytes = concepts.read_bytes()
     renderer = Renderer(articles, json.loads(concept_bytes))
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -121,6 +163,7 @@ def build_index(source, concepts, target):
           CREATE TABLE forms(form TEXT NOT NULL,article TEXT NOT NULL,tags TEXT NOT NULL,
                              PRIMARY KEY(form,article,tags)) WITHOUT ROWID;
         ''')
+        db.executescript('CREATE TABLE expression_forms(form TEXT, article TEXT, parent TEXT, PRIMARY KEY(form,article,parent)) WITHOUT ROWID;')
         for key, article in articles.items():
             senses = renderer.senses(article.get('body', {}).get('definitions', []))
             counts['source_articles'] += 1
@@ -130,22 +173,22 @@ def build_index(source, concepts, target):
             if not names:
                 continue
             aid = str(article.get('article_id', key))
-            status = str(article.get('status'))
+            status = str(article.get('status', article.get('latest_status')))
             statuses[status] += 1
             db.execute('INSERT INTO entries VALUES(?,?,?,?)',
                        (aid, ' / '.join(names), status, json.dumps(senses, ensure_ascii=False)))
-            forms = {(norm(x), aid, '[]') for x in names}
-            for lemma in article.get('lemmas', []):
-                for paradigm in lemma.get('paradigm_info', []):
-                    if paradigm.get('to') is None and paradigm.get('standardisation') == 'STANDARD':
-                        for form in paradigm.get('inflection', []):
-                            if form.get('word_form'):
-                                tags = paradigm.get('tags', []) + form.get('tags', [])
-                                forms.add((norm(form['word_form']), aid, json.dumps(tags)))
+            forms = {(form, aid, tags) for form, tags in article_forms(article)}
             db.executemany('INSERT OR IGNORE INTO forms VALUES(?,?,?)', sorted(forms))
             counts['indexed_articles'] += 1
             counts['senses'] += len(senses)
             counts['articles_with_examples'] += any(s['examples'] for s in senses)
+        for parent, child in sorted(links):
+            if db.execute('SELECT 1 FROM entries WHERE id=?', (child,)).fetchone():
+                db.executemany('INSERT OR IGNORE INTO expression_forms VALUES(?,?,?)',
+                               [(form, child, parent) for form, _ in article_forms(articles.get(parent, {}))])
+        counts['original_top_level_articles'] = source_count
+        counts['embedded_articles_added'] = additions
+        counts['expression_form_links'] = db.execute('SELECT count(*) FROM expression_forms').fetchone()[0]
         counts['distinct_forms'] = db.execute('SELECT count(DISTINCT form) FROM forms').fetchone()[0]
         metadata = {'version': VERSION, 'source': SOURCE, 'source_sha256': hashlib.sha256(packed).hexdigest(),
                     'concepts_sha256': hashlib.sha256(concept_bytes).hexdigest(), 'notice': NOTICE,
@@ -198,3 +241,18 @@ class DictionaryHelp:
             raise ValueError('Expected at most 500 words.')
         return {w: value for w in dict.fromkeys(w for w in words if isinstance(w,str))
                 if (value := self.lookup(w))}
+
+    def lookup_expressions(self, word):
+        if not self.available or not isinstance(word, str) or not 0 < len(word) <= 100:
+            return []
+        db = sqlite3.connect(self.database.resolve().as_uri() + '?mode=ro', uri=True)
+        try:
+            if not db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='expression_forms'").fetchone():
+                return []
+            rows = db.execute("SELECT DISTINCT e.id,e.lemma,e.senses FROM expression_forms f JOIN entries e ON e.id=f.article WHERE f.form=? ORDER BY e.id", (norm(word),)).fetchall()
+            return [{'kind': 'related_expression', 'expression': lemma, 'article_id': aid,
+                     'source_url': 'https://ordbokene.no/bm/'+aid, 'senses': json.loads(senses),
+                     'notice': 'Forklaringen gjelder hele uttrykket, ikke ordet alene.'}
+                    for aid, lemma, senses in rows]
+        finally:
+            db.close()

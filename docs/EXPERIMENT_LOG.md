@@ -66,3 +66,7 @@ Authorized local importer implemented; no spelling/ranking changes. Separate dic
 ## 2026-09-25: Compound/base-form explanation fallback
 
 Tested recorded base lookup and recorded decompositions on unchanged baseline suggestions. Conservative noun-final policy: 12 additional whole-word definitions plus 49 component explanations; any help 72.6% -> 78.3%, first-choice 77.3% -> 79.2%. Unrestricted parts reached 78.9% but included potentially misleading function-word splits. No UI or spelling changes; 53.51 MB extra local index. 42 tests pass, seven skips. See benchmarks/2026-09-25-compound-help.md. Next: intended-answer coverage and human usefulness before UI promotion.
+
+## 2026-09-25: Recover embedded dictionary entries, then audit gaps
+
+173 omitted embedded entries recovered in separate expanded cache; expression identities preserved. Direct suggestion coverage stays 775/1,068; with base/compound fallback 836/1,068. Related-expression-only help available for three residual occurrences, excluded from those totals. Remaining gaps classified; 118/232 contain separators. No spelling/UI/default changes. 43 tests pass, seven skips. See benchmarks/2026-09-25-importer-gaps.md and aggregate JSON. Next justified investigation: another definition source, separating candidate-quality artifacts from lexical gaps.
