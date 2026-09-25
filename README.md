@@ -42,3 +42,19 @@ Research and benchmark tooling were carried over from [Skrivi-STT](https://githu
 
 Project code retains the [MIT licence](LICENSE). External dictionaries, models and datasets retain their own licences and are not included here. The inspected dictionary extract is experimental and must not be treated as a cleared release package.
 
+
+## Offline dictionary-help experiment
+
+Run `sandbox/Start-Dictionary-Experiment.cmd` after building the index once. This is a separate experiment; the normal launcher and spelling/ranking logic are unchanged. Dictionary definitions and examples are shown beside suggestions, with other meanings expandable. Existing Windows speech can read the displayed help. Examples may be phrases, and the displayed sense is not selected automatically from the user's sentence.
+
+One-time import, using already downloaded files (no network access):
+
+```powershell
+python tools/import_bokmaal.py --source "C:\path\bokmaal-articles.json.gz" --concepts "C:\path\bokmaal-concepts.json"
+```
+
+The original export is linked from https://ord.uib.no/ord_1_Ordlister.html; the small expansion table is https://ord.uib.no/bm/concepts.json. On this development PC both are in `C:\Users\jon\Documents\Skrivi\Research\Dictionary-Exploration`.
+
+The generated database lives at `%LOCALAPPDATA%\Skrivi\lexical\bokmaal\dictionary.sqlite3` (or under `SKRIVI_CACHE_DIR`). It is reused across app updates. Re-run the importer to replace it atomically; close the experiment first. Delete that specific database to remove the installed dictionary. No source datasets or generated dictionaries are committed to GitHub.
+
+Local testing proceeds under the user's acceptance of the official open-use wording. The exact licence document and editorial status meanings remain unresolved; the index retains source hashes, attribution and that qualification. See `docs/research/bokmaal-importer.md`. This does not assert that the dictionary is cleared for a general public release.

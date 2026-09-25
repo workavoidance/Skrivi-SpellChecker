@@ -12,13 +12,16 @@ from personal_dictionary import PersonalDictionary
 
 HERE = Path(__file__).parent
 
-def serve(port=0, open_browser=True, poc=False, responsive=False, wordnet=False):
+def serve(port=0, open_browser=True, poc=False, responsive=False, wordnet=False, dictionary=False):
     checker = Checker()
     personal = PersonalDictionary()
     lexical_help = WordnetHelp(
         ROOT / 'lexical' / 'norsk-ordvev-1.1.2' / 'wordnet-help.sqlite3'
         if wordnet else None
     )
+    if dictionary:
+        from dictionary_help import DictionaryHelp
+        lexical_help = DictionaryHelp()
     lock = threading.Lock()
     speech_lock = threading.Lock()
     key = secrets.token_urlsafe(32)
@@ -49,8 +52,10 @@ def serve(port=0, open_browser=True, poc=False, responsive=False, wordnet=False)
                           if available() else
                           '<option value="nuspell_coverage" disabled>Flere ordforslag (orddata mangler)</option>')
                 html = (HERE/page).read_text(encoding='utf-8').replace('__SESSION_KEY__', key)
+                if dictionary:
+                    html = html.replace('</html>', '<script src="/dictionary.js"></script></html>')
                 return self.reply(200, html.replace('__COVERAGE_OPTION__', option), 'text/html; charset=utf-8')
-            if self.path in ('/poc.js', '/responsive.js', '/wordnet.js'):
+            if self.path in ('/poc.js', '/responsive.js', '/wordnet.js', '/dictionary.js'):
                 return self.reply(200, (HERE/self.path[1:]).read_text(encoding='utf-8'), 'text/javascript; charset=utf-8')
             self.reply(404, {'error': 'Not found'})
 
@@ -74,7 +79,7 @@ def serve(port=0, open_browser=True, poc=False, responsive=False, wordnet=False)
                     raise ValueError('Invalid request.')
                 if self.path == '/word-help':
                     if not lexical_help.available:
-                        return self.reply(503, {'error': 'Norsk ordvev help is not installed.'})
+                        return self.reply(503, {'error': 'Offline word help is not installed.'})
                     return self.reply(200, {
                         'available': True,
                         'entries': lexical_help.lookup_many(data.get('words')),
@@ -127,5 +132,6 @@ if __name__ == '__main__':
     parser.add_argument('--poc', action='store_true')
     parser.add_argument('--responsive', action='store_true')
     parser.add_argument('--wordnet', action='store_true')
+    parser.add_argument('--dictionary', action='store_true')
     args = parser.parse_args()
-    serve(args.port, not args.no_browser, args.poc, args.responsive, args.wordnet)
+    serve(args.port, not args.no_browser, args.poc, args.responsive or args.dictionary, args.wordnet, args.dictionary)
