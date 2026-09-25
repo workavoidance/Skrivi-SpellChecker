@@ -62,3 +62,7 @@ Synthetic-only GPT-6 Astra candidate generation plus unchanged optional NorBERT 
 ## 2026-09-25: Offline dictionary definitions and examples
 
 Authorized local importer implemented; no spelling/ranking changes. Separate dictionary-help launcher, 56.13 MB persistent index. Reused baseline suggestion occurrences: definitions 775/1,068, examples 640/1,068; median lookup 0.816 ms. 39 tests pass, seven resource skips, Node UI and local HTTP checks pass. Source and data stay outside Git; public aggregate only. Licence-document verification and publication-status mapping remain open under the user's explicitly accepted local-testing assumption. Details: research/bokmaal-importer.md.
+
+## 2026-09-25: Compound/base-form explanation fallback
+
+Tested recorded base lookup and recorded decompositions on unchanged baseline suggestions. Conservative noun-final policy: 12 additional whole-word definitions plus 49 component explanations; any help 72.6% -> 78.3%, first-choice 77.3% -> 79.2%. Unrestricted parts reached 78.9% but included potentially misleading function-word splits. No UI or spelling changes; 53.51 MB extra local index. 42 tests pass, seven skips. See benchmarks/2026-09-25-compound-help.md. Next: intended-answer coverage and human usefulness before UI promotion.
