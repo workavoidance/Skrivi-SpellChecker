@@ -1,0 +1,11 @@
+{
+  "counts": {
+    "suggestion_occurrences": 1068,
+    "with_definition": 775,
+    "with_example": 640
+  },
+  "unique_suggestions": 757,
+  "median_lookup_ms": 0.8162499871104956,
+  "database_bytes": 56127488,
+  "limitation": "Reused baseline suggestion occurrences, not unique words or human-rated usefulness. No new spelling inference. Examples include phrases. No automatic context-based sense selection."
+}

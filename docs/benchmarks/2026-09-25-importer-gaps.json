@@ -1,0 +1,52 @@
+{
+  "counts": {
+    "total": 1068,
+    "old_direct": 775,
+    "new_direct": 775,
+    "exact": 775,
+    "missing": 232,
+    "components": 49,
+    "base": 12
+  },
+  "remaining_gap_categories": {
+    "separator_form_still_no_help": 113,
+    "ordbank_form_no_usable_dictionary_help": 53,
+    "no_recorded_form_link": 45,
+    "ordbank_proper_name": 11,
+    "separator_form_joined_has_help": 5,
+    "expression_help_only": 3,
+    "source_form_without_definition": 2
+  },
+  "by_rank": {
+    "1": {
+      "exact": 327,
+      "components": 8,
+      "missing": 88
+    },
+    "2": {
+      "exact": 236,
+      "components": 20,
+      "missing": 85,
+      "base": 6
+    },
+    "3": {
+      "missing": 59,
+      "exact": 212,
+      "components": 21,
+      "base": 6
+    }
+  },
+  "unique_suggestions": 757,
+  "unique_missing": 152,
+  "input_hashes": {
+    "development-nuspell_context.json": "76e381991792407d66ec3159e95f7bd3b4e3206c997b3ca185ddfa0196e1b5ec",
+    "previously_fresh-nuspell_context.json": "a96b13b97d1aea6922fba5230a119bcbe8c023c0d9f3ac89ab8f3bdc3759837b",
+    "source_restoration-nuspell_context.json": "38280a3fd6ca4f10bc89bdfb234d479344c92fb24d1b2b12391fd365d1e80d8c"
+  },
+  "limitations": [
+    "Categories are mechanical routing evidence, not correctness judgments.",
+    "Related expressions are not whole-word definitions and are excluded from definition/component coverage.",
+    "Joining separator forms is a diagnostic only, not a correction or acceptance rule.",
+    "Same reused baseline; no model inference or human usefulness claim."
+  ]
+}

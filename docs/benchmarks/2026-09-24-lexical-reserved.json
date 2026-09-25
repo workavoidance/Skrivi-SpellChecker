@@ -1,0 +1,45 @@
+{
+  "freeze": {
+    "policy": "proposal_only",
+    "code_sha256": "10f7d0d5fa391ba4deb78fca64cd47bf967f905298fd7eb6eb5158b111f6bb3a",
+    "data_sha256": "83a4ef37a0a7eb74e168dc93aeaffc192a19a151cd282e500e82dd8d119346e0",
+    "frozen_utc": "2026-09-24T14:55:58.756027+00:00",
+    "statement": "Selected from development results before any reserved inference; no tuning from reserve."
+  },
+  "completed_checks": 80,
+  "summary": {
+    "baseline": {
+      "error_targets": 20,
+      "detected": 20,
+      "native_candidate_hit": 18,
+      "candidate_hit": 18,
+      "top1": 16,
+      "top3": 18,
+      "hypothetical_top5": 18,
+      "partition_success": 18,
+      "control_targets": 20,
+      "control_false_flags": 0,
+      "partition_candidate_missing": 2
+    },
+    "proposal_only": {
+      "error_targets": 20,
+      "detected": 20,
+      "native_candidate_hit": 18,
+      "candidate_hit": 18,
+      "top1": 16,
+      "top3": 18,
+      "hypothetical_top5": 18,
+      "partition_success": 18,
+      "control_targets": 20,
+      "control_false_flags": 0,
+      "partition_candidate_missing": 2
+    }
+  },
+  "paired_comparisons": {
+    "gained_top3": 0,
+    "lost_top3": 0,
+    "added_control_flags": 0,
+    "removed_control_flags": 0
+  },
+  "limitation": "Only 20 selected learner pairs, not an independent dyslexia test. Reserve is now consumed; do not reuse as untouched data."
+}

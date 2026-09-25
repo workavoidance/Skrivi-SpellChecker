@@ -1,0 +1,122 @@
+{
+  "isolation_audit": {
+    "cases": 12,
+    "same_scored_outcome": 12,
+    "same_decision": 12
+  },
+  "primary_requests": 42,
+  "audit_requests": 12,
+  "model": "gpt-6-astra",
+  "returned_models": [
+    "gpt-6-astra"
+  ],
+  "reasoning": "medium",
+  "completed": 168,
+  "planned": 168,
+  "groups": {
+    "synthetic_morphology": {
+      "unranked": {
+        "controls": 60,
+        "unnecessary_reviews": 0,
+        "errors": 60,
+        "candidate_available": 60,
+        "top1": 28,
+        "top3": 39,
+        "top1_when_available": 28,
+        "top3_when_available": 39,
+        "keep_on_error": 0
+      },
+      "norbert": {
+        "controls": 60,
+        "unnecessary_reviews": 0,
+        "errors": 60,
+        "candidate_available": 60,
+        "top1": 56,
+        "top3": 59,
+        "top1_when_available": 56,
+        "top3_when_available": 59,
+        "keep_on_error": 0
+      },
+      "reference": {
+        "controls": 60,
+        "unnecessary_reviews": 0,
+        "errors": 60,
+        "candidate_available": 60,
+        "top1": 60,
+        "top3": 60,
+        "top1_when_available": 60,
+        "top3_when_available": 60,
+        "keep_on_error": 0
+      }
+    },
+    "synthetic_context": {
+      "unranked": {
+        "controls": 24,
+        "unnecessary_reviews": 0,
+        "errors": 24,
+        "candidate_available": 22,
+        "top1": 1,
+        "top3": 1,
+        "top1_when_available": 1,
+        "top3_when_available": 1,
+        "keep_on_error": 22
+      },
+      "norbert": {
+        "controls": 24,
+        "unnecessary_reviews": 0,
+        "errors": 24,
+        "candidate_available": 22,
+        "top1": 22,
+        "top3": 22,
+        "top1_when_available": 22,
+        "top3_when_available": 22,
+        "keep_on_error": 1
+      },
+      "reference": {
+        "controls": 24,
+        "unnecessary_reviews": 0,
+        "errors": 24,
+        "candidate_available": 22,
+        "top1": 22,
+        "top3": 22,
+        "top1_when_available": 22,
+        "top3_when_available": 22,
+        "keep_on_error": 0
+      }
+    }
+  },
+  "changes": {
+    "synthetic_morphology": {
+      "warnings_added": 0,
+      "warnings_removed": 0,
+      "top1_gains": 4,
+      "top1_losses": 0,
+      "top3_gains": 1,
+      "top3_losses": 0
+    },
+    "synthetic_context": {
+      "warnings_added": 0,
+      "warnings_removed": 0,
+      "top1_gains": 0,
+      "top1_losses": 0,
+      "top3_gains": 0,
+      "top3_losses": 0
+    }
+  },
+  "usage": {
+    "input_tokens": 48027,
+    "output_tokens": 5321,
+    "reasoning_tokens": 709
+  },
+  "requests": 54,
+  "request_statuses": {
+    "completed": 54
+  },
+  "estimated_standard_usd": 0.74632,
+  "conservative_accounted_usd": 0.8663875000000003,
+  "median_batch_seconds": 3.3524525000248104,
+  "data_sha256": "d201c8b4d00df7d626ba9cb5b4edcde38fd2da682c0b1d504b7b031f6f321a96",
+  "prompt_sha256": "9f54b64d59c9b8b3784262e8387e858e0bdc1b41291d845c5ad041e69a26eb42",
+  "synthetic_only": true,
+  "app_changed": false
+}
