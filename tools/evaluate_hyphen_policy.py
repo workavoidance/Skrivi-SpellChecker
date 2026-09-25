@@ -11,16 +11,17 @@ from hyphen_policy import HyphenPolicy
 
 ROOT=Path(__file__).resolve().parents[1]
 VARIANTS=['guard','guard_native_tiebreak','guard_gap']
-def main():
+def main(policy_override=None, variants=None, output_name="hyphen-policy"):
+    variants = variants or VARIANTS
     db=sqlite3.connect((CACHE/'lexical/ordbank-20220201/ordbank.sqlite3').as_uri()+'?mode=ro',uri=True)
     forms={r[0] for r in db.execute('SELECT word FROM form')};db.close()
     dic=CACHE/'models'/('bokmal-lexicon-'+DICT_REV[:12])/'nb_NO.dic'
     explicit={line.split('/')[0].strip().casefold() for line in dic.read_text(encoding='utf-8-sig').splitlines()[1:]}
-    policy=HyphenPolicy(lambda w:w in forms or w in explicit,lambda w:w in forms or w in explicit)
+    policy=policy_override or HyphenPolicy(lambda w:w in forms or w in explicit,lambda w:w in forms or w in explicit)
     report={};details=[]
     def evaluate(label,rows,targets):
         groups={}
-        for variant in VARIANTS:
+        for variant in variants:
             count=collections.Counter()
             for row,ts in zip(rows,targets):
                 if 'result' not in row:continue
@@ -70,7 +71,7 @@ def main():
                     return out
                 targets.append(getter)
             if selected:evaluate(mode+'_'+group,selected,targets)
-    out=ROOT/'results/hyphen-policy-20260925';out.mkdir(exist_ok=True)
+    out=ROOT/f'results/{output_name}-20260925';out.mkdir(exist_ok=True)
     (out/'regressions.json').write_text(json.dumps(details,ensure_ascii=False,indent=2),encoding='utf-8')
     legitimate=['e-post','TV-utvalg','tv-utvalg','x-akse','EU-motstander','FM-sender',
                 '50-årsdag','A4-format','ikke-røyker','romersk-katolsk','svart-hvitt',
@@ -88,6 +89,6 @@ def main():
                           'Reused tests; no new independent accuracy claim.',
                           'Hyphen counts are not human-adjudicated bad-suggestion counts.',
                           'Original detection/status preserved, including flags whose suggestions become empty.']}
-    (ROOT/'docs/benchmarks/2026-09-25-hyphen-policy.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+    (ROOT/f'docs/benchmarks/2026-09-25-{output_name}.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,indent=2))
 if __name__=='__main__':main()
