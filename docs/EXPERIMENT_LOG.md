@@ -70,3 +70,7 @@ Tested recorded base lookup and recorded decompositions on unchanged baseline su
 ## 2026-09-25: Recover embedded dictionary entries, then audit gaps
 
 173 omitted embedded entries recovered in separate expanded cache; expression identities preserved. Direct suggestion coverage stays 775/1,068; with base/compound fallback 836/1,068. Related-expression-only help available for three residual occurrences, excluded from those totals. Remaining gaps classified; 118/232 contain separators. No spelling/UI/default changes. 43 tests pass, seven skips. See benchmarks/2026-09-25-importer-gaps.md and aggregate JSON. Next justified investigation: another definition source, separating candidate-quality artifacts from lexical gaps.
+
+## 2026-09-25: Hyphen policy, native-rank blend and score-gap cutoff
+
+Replayed saved historical and wider scored pools. New-hyphen evidence guard gives +17 first-choice learner successes in both default and optional modes, no observed top-three losses; historical hyphens 118 -> 5. Separate legitimate-form diagnostic blocks four of 20 valid forms, so guard remains experimental. Native-rank blend and 2-unit gap cutoff introduce regressions; rejected for promotion. No app changes. 47 tests pass, seven skips. See benchmarks/2026-09-25-hyphen-policy.md for exact counts and limitations. Next: legitimate-hyphen rules and fresh diagnostic before opt-in integration.
