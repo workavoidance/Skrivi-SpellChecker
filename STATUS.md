@@ -128,3 +128,21 @@ Do not promote yet: separate legitimate-form gate probe retained 16/20, rejectin
 ## 2026-09-25: Softer hyphen candidate ordering
 
 Extended soft policy retains all eligible choices, demoting unsupported new hyphens. Saved-score replay: learner default first-choice 245 -> 261/297; optional coverage 247 -> 263; respective top-three 274 and 277 unchanged. No individual first/top-three losses across replayed groups. Historical displayed hyphens 118 -> 21. All-analysis adjective lookup fixes compact-table POS ambiguity. Synthetic legitimate gate diagnostics recognize 38/40, retain 40/40; 12 suspect splits demoted. These are development probes, not fresh model accuracy. 51 tests pass, seven skips. App/defaults unchanged; more-suggestions payload is not yet wired to UI. Report: docs/benchmarks/2026-09-25-soft-hyphen-policy.md; aggregates alongside; private results/soft-hyphen-policy-20260925/. Next: optional UI integration and fresh end-to-end examples. No downloads/cloud calls.
+
+## Native desktop app — 28 September 2026
+
+Skrivi Rett 0.1.0 native Windows shell now wraps the cached Nuspell/NorBERT engine,
+with the measured soft-hyphen ordering and accessible extra suggestions. Reuses
+Lytt's MIT family theme and Settings navigation. Direct dictionary definitions,
+examples, Windows speech, exact-span replacement, undo, local file I/O and adaptive
+side/below layout. Browser sandbox defaults remain unchanged.
+
+56 tests pass, seven skips. Real-model native UI and frozen/installed self-tests pass.
+Temporary install/uninstall left 27 cached resource hashes unchanged. No model or
+lexical downloads, no private text uploaded. Installer approximately 34 MB, unsigned,
+for this existing-cache PC; no Store release or clean-PC provisioning yet.
+
+Details/build instructions: desktop/README.md. Code: desktop/, installer/,
+tools/build_desktop.py. Generated local setup: dist/installer/. Private verification
+and screenshots: results/rett-*. Next: user trial, then clean-PC cache provisioning,
+release signing and Store packaging. No new claim about general spelling accuracy.

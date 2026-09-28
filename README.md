@@ -60,3 +60,10 @@ The generated database lives at `%LOCALAPPDATA%\Skrivi\lexical\bokmaal\dictionar
 Local testing proceeds under the user's acceptance of the official open-use wording. The exact licence document and editorial status meanings remain unresolved; the index retains source hashes, attribution and that qualification. See `docs/research/bokmaal-importer.md`. This does not assert that the dictionary is cleared for a general public release.
 
 Importer recovery experiment: add `--include-embedded --output <cache>/dictionary-expanded.sqlite3` to index nested expressions separately. This preserves the installed index. Run `python tools/audit_importer_gaps.py` to reproduce the saved-baseline gap analysis. Related expressions are exposed separately by `lookup_expressions`; they are not yet wired into the UI. See `docs/benchmarks/2026-09-25-importer-gaps.md`.
+
+## Skrivi Rett desktop preview
+
+The first native Windows application is now available as a local installer build.
+It follows the Skrivi Snakk/Lytt interface and reuses the existing Norwegian cache.
+See [desktop setup, features and verification](desktop/README.md). The browser
+sandbox remains available separately.
