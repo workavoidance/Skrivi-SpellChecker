@@ -1,0 +1,10 @@
+Skrivi Rett 0.1.0 - local test build
+
+Norwegian Bokmal only. This build reuses the existing Norwegian sandbox runtime,
+models and dictionary cache on this PC. It does not download or bundle those assets.
+
+The app installs separately from Skrivi Snakk, Lytt and the spelling sandbox.
+Updating or uninstalling it leaves the shared model cache and personal word list intact.
+
+This test installer is unsigned. Store packaging, signing and clean-PC setup are
+not part of this build. Dictionary redistribution terms remain under review.

@@ -78,3 +78,14 @@ Replayed saved historical and wider scored pools. New-hyphen evidence guard give
 ## 2026-09-25: Softer hyphen candidate ordering
 
 Extended soft policy retains all eligible choices, demoting unsupported new hyphens. Saved-score replay: learner default first-choice 245 -> 261/297; optional coverage 247 -> 263; respective top-three 274 and 277 unchanged. No individual first/top-three losses across replayed groups. Historical displayed hyphens 118 -> 21. All-analysis adjective lookup fixes compact-table POS ambiguity. Synthetic legitimate gate diagnostics recognize 38/40, retain 40/40; 12 suspect splits demoted. These are development probes, not fresh model accuracy. 51 tests pass, seven skips. App/defaults unchanged; more-suggestions payload is not yet wired to UI. Report: docs/benchmarks/2026-09-25-soft-hyphen-policy.md; aggregates alongside; private results/soft-hyphen-policy-20260925/. Next: optional UI integration and fresh end-to-end examples. No downloads/cloud calls.
+
+## 2026-09-28: First native Skrivi Rett desktop build
+
+Native Qt shell matching Lytt/Snakk family navigation, using existing cache and
+Norwegian-only context checker. Extended soft hyphen policy is the desktop default;
+extra eligible candidates remain selectable. Existing browser defaults unchanged.
+56 lightweight tests pass, seven skips; native and frozen/installed authored-sentence
+checks pass, including definitions, replacement and undo. Install/uninstall preserved
+27 cached resource hashes. Source-level UI tests also cover extra choices, responsive
+orientation and settings tabs. No pupil text exported or new model downloaded.
+See ../desktop/README.md for build, limitations and local paths.
